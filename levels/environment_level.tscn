@@ -1,0 +1,215 @@
+[gd_scene load_steps=28 format=3 uid="uid://cxy6c5mbaekek"]
+
+[ext_resource type="Shader" path="res://vfx/outline_sobol.gdshader" id="1_snj8v"]
+[ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://vfx/Vignette2048x1024.png" id="2_2bx5a"]
+[ext_resource type="Shader" path="res://vfx/fake_volumetric_light.gdshader" id="3_wak7x"]
+[ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_647ns"]
+[ext_resource type="ArrayMesh" uid="uid://e0wiltkwetym" path="res://models/forest/meshes/Root Scene_stone2.res" id="5_voprw"]
+[ext_resource type="ArrayMesh" uid="uid://dwocdpnvbjw7x" path="res://models/forest/meshes/Root Scene_stone3.res" id="6_2iktu"]
+[ext_resource type="ArrayMesh" uid="uid://vitvhdnbysqu" path="res://models/forest/meshes/Root Scene_stone4.res" id="7_h3vtu"]
+[ext_resource type="ArrayMesh" uid="uid://d07s0f1b8fdfi" path="res://models/forest/meshes/Root Scene_stone5.res" id="8_lulr5"]
+[ext_resource type="ArrayMesh" uid="uid://ddhgnq8bvqsot" path="res://models/forest/meshes/Root Scene_stone.res" id="9_1yfyb"]
+[ext_resource type="ArrayMesh" uid="uid://dvcya6sjjkk4p" path="res://models/forest/meshes/Root Scene_tree2.res" id="10_ic3g8"]
+[ext_resource type="ArrayMesh" uid="uid://bsajxbllaqfyl" path="res://models/forest/meshes/Root Scene_tree3.res" id="11_u1ffw"]
+[ext_resource type="ArrayMesh" uid="uid://b3sk8m15ebrhc" path="res://models/forest/meshes/Root Scene_tree.res" id="12_nyqh5"]
+[ext_resource type="Shader" path="res://vfx/water_modified.gdshader" id="13_77iwq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ukfv"]
+render_priority = 0
+shader = ExtResource("1_snj8v")
+shader_parameter/min_step = 0.0
+shader_parameter/max_step = 0.6
+shader_parameter/sobol_brightness = 0.25
+shader_parameter/transparency = 0.85
+
+[sub_resource type="QuadMesh" id="QuadMesh_w8jjv"]
+material = SubResource("ShaderMaterial_2ukfv")
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmpm6"]
+disable_ambient_light = true
+disable_fog = true
+emission_enabled = true
+emission = Color(1, 0.8, 0.45098, 1)
+emission_energy_multiplier = 2.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_uujae"]
+material = SubResource("StandardMaterial3D_xmpm6")
+radius = 25.0
+height = 50.0
+radial_segments = 16
+rings = 1
+is_hemisphere = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktvht"]
+render_priority = 0
+shader = ExtResource("3_wak7x")
+shader_parameter/tint_color = Color(1, 0.964706, 0.890196, 1)
+shader_parameter/fresnel_value = 0.03
+shader_parameter/transparency_multiplier = 10.825
+shader_parameter/proximity_fade_distance = null
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 50.0
+shader_parameter/uv1_scale = null
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bakfa"]
+material = SubResource("ShaderMaterial_ktvht")
+top_radius = 10.0
+bottom_radius = 0.0
+height = 1100.0
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Gradient" id="Gradient_3g1nj"]
+offsets = PackedFloat32Array(0.2, 0.644444)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3va7o"]
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3kpxx"]
+width = 2048
+height = 2048
+seamless = true
+as_normal_map = true
+color_ramp = SubResource("Gradient_3g1nj")
+noise = SubResource("FastNoiseLite_3va7o")
+
+[sub_resource type="Gradient" id="Gradient_1gou7"]
+offsets = PackedFloat32Array(0.0666667, 0.588889)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lg6tx"]
+width = 2048
+height = 2048
+seamless = true
+as_normal_map = true
+color_ramp = SubResource("Gradient_1gou7")
+noise = SubResource("FastNoiseLite_3va7o")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c2gy5"]
+width = 2048
+height = 2048
+seamless = true
+color_ramp = SubResource("Gradient_3g1nj")
+noise = SubResource("FastNoiseLite_3va7o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ovu7"]
+render_priority = 0
+shader = ExtResource("13_77iwq")
+shader_parameter/water_color = Color(0.117647, 0.192157, 0.294118, 1)
+shader_parameter/water_color2 = Color(0.184314, 0.298039, 0.423529, 1)
+shader_parameter/roughness = 0.4
+shader_parameter/wave_scale = 128.0
+shader_parameter/height_scale = 1.895
+shader_parameter/wave_dir1 = Vector2(1, 0)
+shader_parameter/wave_dir2 = Vector2(0, 1)
+shader_parameter/wave_speed = 0.003
+shader_parameter/wave_texture = SubResource("NoiseTexture2D_c2gy5")
+shader_parameter/normal1 = SubResource("NoiseTexture2D_3kpxx")
+shader_parameter/normal2 = SubResource("NoiseTexture2D_lg6tx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iqtpq"]
+material = SubResource("ShaderMaterial_0ovu7")
+size = Vector2(1000, 1000)
+subdivide_width = 100
+subdivide_depth = 100
+
+[node name="Level" type="Node"]
+
+[node name="VFX" type="Node" parent="."]
+
+[node name="Sobol" type="MeshInstance3D" parent="VFX"]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_w8jjv")
+skeleton = NodePath("../..")
+
+[node name="Vignette" type="TextureRect" parent="VFX"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2bx5a")
+expand_mode = 1
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.707106, -0.45452, 0.541675, 3.72529e-09, 0.766044, 0.642788, -0.707107, 0.454519, -0.541675, 0, 3, -24)
+light_color = Color(0.878431, 0.686275, 0.352941, 1)
+light_energy = 0.7
+shadow_enabled = true
+
+[node name="Sun" type="MeshInstance3D" parent="Environment/DirectionalLight3D"]
+transform = Transform3D(1, 0, 0, 0, -8.9407e-08, 1, 0, -1, -2.98023e-08, 1.19209e-07, -2.86102e-05, 1000)
+extra_cull_margin = 16384.0
+mesh = SubResource("SphereMesh_uujae")
+skeleton = NodePath("../../..")
+
+[node name="Volumetric" type="MeshInstance3D" parent="Environment/DirectionalLight3D/Sun"]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 0, 1.49012e-08, 1, 0.000106812, 549, 0)
+mesh = SubResource("CylinderMesh_bakfa")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.258818, -0.620886, -0.739942, 4.72601e-08, 0.766044, -0.642788, 0.965926, 0.166365, 0.198266, 0, 2, 0)
+visible = false
+light_color = Color(1, 0, 0.917647, 1)
+light_energy = 0.25
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.965926, -0.166366, -0.198267, 5.49735e-08, 0.766044, -0.642788, 0.25882, 0.620885, 0.739942, 0, 1, 0)
+visible = false
+light_color = Color(0.0156863, 0, 1, 1)
+light_energy = 0.25
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = ExtResource("4_647ns")
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+mesh = SubResource("PlaneMesh_iqtpq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9677, -0.0246107, -0.2509, 0, 0.995224, -0.0976215, 0.252104, 0.0944684, 0.963078, -5.71902, 2.27484, -5.63216)
+
+[node name="LowPolyForest" type="Node3D" parent="."]
+
+[node name="RootSceneStone2" type="MeshInstance3D" parent="LowPolyForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -22)
+mesh = ExtResource("5_voprw")
+skeleton = NodePath("../..")
+
+[node name="RootSceneStone3" type="MeshInstance3D" parent="LowPolyForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -13)
+mesh = ExtResource("6_2iktu")
+skeleton = NodePath("../..")
+
+[node name="RootSceneStone4" type="MeshInstance3D" parent="LowPolyForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -14)
+mesh = ExtResource("7_h3vtu")
+skeleton = NodePath("../..")
+
+[node name="RootSceneStone5" type="MeshInstance3D" parent="LowPolyForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14)
+mesh = ExtResource("8_lulr5")
+skeleton = NodePath("../..")
+
+[node name="RootSceneStone" type="MeshInstance3D" parent="LowPolyForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -15)
+mesh = ExtResource("9_1yfyb")
+skeleton = NodePath("../..")
+
+[node name="RootSceneTree2" type="MeshInstance3D" parent="LowPolyForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -29)
+mesh = ExtResource("10_ic3g8")
+skeleton = NodePath("../..")
+
+[node name="RootSceneTree3" type="MeshInstance3D" parent="LowPolyForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -26)
+mesh = ExtResource("11_u1ffw")
+skeleton = NodePath("../..")
+
+[node name="RootSceneTree" type="MeshInstance3D" parent="LowPolyForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -22)
+mesh = ExtResource("12_nyqh5")
+skeleton = NodePath("../..")
