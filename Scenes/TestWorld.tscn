@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://w0vqd0dr1ii"]
 
-[ext_resource type="Script" path="res://Addon/Smoother/smoother.gd" id="1_r4a4f"]
-[ext_resource type="Texture2D" uid="uid://v2t3g2i7amrx" path="res://Addon/Kenney/addons/kenney_prototype_textures/orange/texture_01.png" id="1_tu3sq"]
+[ext_resource type="Script" path="res://addons/Smoother/smoother.gd" id="1_r4a4f"]
+[ext_resource type="Texture2D" uid="uid://v2t3g2i7amrx" path="res://addons/Kenney/addons/kenney_prototype_textures/orange/texture_01.png" id="1_tu3sq"]
 [ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://Prefabs/Player.tscn" id="2_wayho"]
 [ext_resource type="PackedScene" uid="uid://0dxd1iuv8lna" path="res://Prefabs/RigidBall.tscn" id="3_eclt4"]
 

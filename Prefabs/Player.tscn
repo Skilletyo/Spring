@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_7fmxk"]
 [ext_resource type="Shader" path="res://VFX/outline_sobol.gdshader" id="2_5k3vi"]
-[ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://vfx/Vignette2048x1024.png" id="3_au6mq"]
+[ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://VFX/Vignette2048x1024.png" id="3_au6mq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_b4w05"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ulylq"]
+radius = 0.2
+height = 1.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ukfv"]
 render_priority = 0
@@ -23,18 +25,22 @@ size = Vector2(2, 2)
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_7fmxk")
+speed = 3.0
+runSpeed = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_b4w05")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("CapsuleShape3D_ulylq")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 fov = 90.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Node3D/Camera3D"]
