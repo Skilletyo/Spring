@@ -28,6 +28,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	#Loads the user interface
+	References.Player = self
 	
 	add_child(loadUserInterface)
 
