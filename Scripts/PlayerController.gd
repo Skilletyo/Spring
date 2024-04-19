@@ -7,6 +7,9 @@ extends CharacterBody3D
 @export var mouseSensitivity = 2.0
 
 @export var pullStrength = 100
+@export var held_object_rotation_speed = 0.1
+
+@onready var camera = $Node3D/Camera3D
 
 #Stuff for the pickup system.
 
@@ -43,6 +46,10 @@ func _physics_process(delta):
 		currentTarget.can_sleep = false
 		var moveToPosition = $Node3D/Camera3D/Hand3D.global_position - currentTarget.global_position
 		currentTarget.apply_force(moveToPosition * pullStrength)
+		# Lerp rotation on 3 axies
+		currentTarget.global_rotation.x = lerp_angle(currentTarget.global_rotation.x, camera.global_rotation.x, held_object_rotation_speed)
+		currentTarget.global_rotation.y = lerp_angle(currentTarget.global_rotation.y, camera.global_rotation.y, held_object_rotation_speed)
+		currentTarget.global_rotation.z = lerp_angle(currentTarget.global_rotation.z, camera.global_rotation.z, held_object_rotation_speed)
 		lastTarget = currentTarget
 
 	if currentTarget == null && lastTarget != null:
