@@ -6,6 +6,7 @@ extends Control
 @onready var hungerTimer = $Hunger/HungerTimer
 @onready var hungerLabel = $Hunger/HungerLabel
 @onready var healthLabel = $Hunger/HealthLabel
+
 @onready var randomGenerator = RandomNumberGenerator.new()
 
 func _ready():
@@ -23,9 +24,20 @@ func checkIfStarving():
 		$StarvingLabel.show()
 		healthValue -= 2
 
+func clampValues():
+	if hungerValue > 100:
+		hungerValue = 100
+	if hungerValue < 0:
+		hungerValue = 0
+	if healthValue > 100:
+		healthValue = 100
+	if healthValue < 0:
+		healthValue = 0
+
 func drawLabels():
 	hungerLabel.text = ("Hunger: " + str(hungerValue) + "%")
 	healthLabel.text = ("Health: " + str(healthValue) + "%")
 
 func _process(delta):
+	clampValues()
 	drawLabels()
