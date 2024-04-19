@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://diqnasyjocgr3"]
+
+[ext_resource type="Script" path="res://Scripts/Stereo.gd" id="1_u0nau"]
+[ext_resource type="AudioStream" uid="uid://cscutee1k81ge" path="res://Audio/Music/Ruth White - Evening Harmony.ogg" id="2_kefba"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6dgd"]
+size = Vector3(1.55933, 0.709534, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d2vqp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fj4f5"]
+
+[node name="Stereo" type="RigidBody3D" groups=["Interactable", "Physics"]]
+collision_layer = 2
+script = ExtResource("1_u0nau")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_kefba")
+volume_db = -10.0
+unit_size = 2.0
+max_db = -15.0
+bus = &"Stereo"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157471, -0.00308228, 0)
+shape = SubResource("BoxShape3D_v6dgd")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_d2vqp")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, -0.73692, 0.66766, 0)
+mesh = SubResource("BoxMesh_d2vqp")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, -8.74228e-09, -0.5, 0, 0.2, -2.18557e-08, -0.496256, 0, 0.463509)
+mesh = SubResource("CylinderMesh_fj4f5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, -8.74228e-09, -0.5, 0, 0.2, -2.18557e-08, 0.453669, 0, 0.463509)
+mesh = SubResource("CylinderMesh_fj4f5")
+skeleton = NodePath("../..")
+
+[connection signal="interacted_with" from="." to="." method="_on_interacted_with"]

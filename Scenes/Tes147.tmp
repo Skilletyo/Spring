@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://w0vqd0dr1ii"]
+
+[ext_resource type="Script" path="res://addons/Smoother/smoother.gd" id="1_r4a4f"]
+[ext_resource type="Texture2D" uid="uid://v2t3g2i7amrx" path="res://addons/Kenney/addons/kenney_prototype_textures/orange/texture_01.png" id="1_tu3sq"]
+[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://Prefabs/Player.tscn" id="2_wayho"]
+[ext_resource type="PackedScene" uid="uid://0dxd1iuv8lna" path="res://Prefabs/RigidBall.tscn" id="3_eclt4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4qqbu"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ikwic"]
+sky_material = SubResource("ProceduralSkyMaterial_4qqbu")
+
+[sub_resource type="Environment" id="Environment_g6blc"]
+background_mode = 2
+sky = SubResource("Sky_ikwic")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffywq"]
+albedo_texture = ExtResource("1_tu3sq")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g6blc")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.753906, 0)
+material_override = SubResource("StandardMaterial3D_ffywq")
+use_collision = true
+size = Vector3(43.9182, 1.49219, 35.678)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_wayho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41089, 2.18433, 4.88989)
+
+[node name="Ball" parent="." instance=ExtResource("3_eclt4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29126, 2.96558, 0.192017)
+
+[node name="Smoother" type="Node" parent="."]
+script = ExtResource("1_r4a4f")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://cfx2bv1gawk6g"]
+[gd_scene load_steps=31 format=3 uid="uid://cfx2bv1gawk6g"]
 
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
-[ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://VFX/environment.tres" id="4_xurpp"]
+[ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_xurpp"]
 [ext_resource type="Shader" path="res://Materials/water_modified.gdshader" id="5_qko3u"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatter.gd" id="6_2c5a2"]
 [ext_resource type="PackedScene" uid="uid://3w3i6cba8o35" path="res://Prefabs/landscape.tscn" id="6_avqk7"]
@@ -9,11 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://5diet84f3io2" path="res://Prefabs/barrel.tscn" id="6_ssdmx"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterItem.gd" id="7_cavyc"]
 [ext_resource type="PackedScene" uid="uid://d1fdpa6v24m2j" path="res://Prefabs/pier_body.tscn" id="7_qmuo0"]
-[ext_resource type="ArrayMesh" uid="uid://b3sk8m15ebrhc" path="res://Models/forest/meshes/Root Scene_tree.res" id="7_y5l7b"]
+[ext_resource type="ArrayMesh" uid="uid://b3sk8m15ebrhc" path="res://models/forest/meshes/Root Scene_tree.res" id="7_y5l7b"]
 [ext_resource type="PackedScene" uid="uid://db53qa12vq5xi" path="res://Prefabs/cabin.tscn" id="8_lsqc1"]
 [ext_resource type="PackedScene" uid="uid://biuu0p2fomtw0" path="res://Prefabs/pier_pillar.tscn" id="8_p0pqc"]
 [ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://Prefabs/tree_one.tscn" id="9_gpx65"]
 [ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://Prefabs/Player.tscn" id="9_lhtuy"]
+[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://Audio/Ambiance/SeaAmbiance_Loop.ogg" id="14_uyfor"]
+[ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://Prefabs/Stereo.tscn" id="16_rus3r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmpm6"]
 disable_ambient_light = true
@@ -596,3 +598,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9677, -0.0246108, -0.2509, 0, 0.995224, -0.0976215, 0.252104, 0.0944683, 0.963078, -5.71902, 2.27484, -5.63216)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_uyfor")
+volume_db = -25.0
+autoplay = true
+
+[node name="Stereo" parent="." instance=ExtResource("16_rus3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52305, 2.95698, 77.6842)
