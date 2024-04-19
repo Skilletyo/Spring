@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjyavdw8rkdri"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_7fmxk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b4w05"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ulylq"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_7fmxk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_b4w05")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ulylq")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+fov = 90.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Node3D/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+
+[node name="Hand3D" type="Node3D" parent="Node3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00013423, -1.80595)
