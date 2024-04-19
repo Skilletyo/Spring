@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Spring"
-run/main_scene="res://Scenes/TestWorld.tscn"
+run/main_scene="res://main_level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,10 @@ References="*res://Scripts/references.gd"
 [dotnet]
 
 project/assembly_name="Spring"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/yamms/plugin.cfg")
 
 [input]
 

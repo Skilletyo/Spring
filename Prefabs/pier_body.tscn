@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d1fdpa6v24m2j"]
+
+[node name="PierBody" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(16, 1, 4)

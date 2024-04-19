@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://biuu0p2fomtw0"]
+
+[node name="PierPillar" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+use_collision = true
+radius = 0.2
+height = 4.0
+sides = 6

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://3w3i6cba8o35"]
+
+[node name="Landscape" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(100, 2, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, -38.5)
+size = Vector3(61, 7, 23)
