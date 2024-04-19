@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cha5qy70661v6"]
+
+[ext_resource type="Script" path="res://Scripts/UserInterface.gd" id="1_vjl2p"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vjl2p")
+
+[node name="Hunger" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HungerLabel" type="Label" parent="Hunger"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 60.0
+offset_right = 1132.0
+offset_bottom = 83.0
+text = "Hunger: "
+
+[node name="HealthLabel" type="Label" parent="Hunger"]
+layout_mode = 0
+offset_right = 1131.0
+offset_bottom = 23.0
+text = "Health: "
+
+[node name="StarvingLabel" type="Label" parent="Hunger"]
+visible = false
+layout_mode = 0
+offset_top = 83.0
+offset_right = 1131.0
+offset_bottom = 106.0
+text = "I am starving! :("
+
+[node name="HungerTimer" type="Timer" parent="Hunger"]
+autostart = true
+
+[connection signal="timeout" from="Hunger/HungerTimer" to="." method="_on_hunger_timer_timeout"]

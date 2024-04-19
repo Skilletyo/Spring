@@ -1,15 +1,18 @@
 extends CharacterBody3D
 
+signal interacted_with
 
 @export var speed = 5.0
 @export var runSpeed = 8.0
 @export var jumpVelocity = 4.5
 @export var mouseSensitivity = 2.0
-
 @export var pullStrength = 100
 @export var held_object_rotation_speed = 0.1
 
 @onready var camera = $Node3D/Camera3D
+
+var userInterface = load("res://Prefabs/UI.tscn")
+var loadUserInterface = userInterface.instantiate()
 
 #Stuff for the pickup system.
 
@@ -23,13 +26,17 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	#Loads the user interface
+	
+	add_child(loadUserInterface)
 
 func _physics_process(delta):
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	if Input.is_action_pressed("Interact"):
+	if Input.is_action_pressed("Pickup"):
 		if $Node3D/Camera3D/RayCast3D.is_colliding():
 			seenObject = $Node3D/Camera3D/RayCast3D.get_collider()
 			if seenObject.is_in_group("Physics"):
@@ -37,8 +44,12 @@ func _physics_process(delta):
 	else:
 		currentTarget = null
 
-# This part of the code tells the physics engine to keep moving the current targeted RigidBody3D to the Hand node.
-# Depends on the code above to work.
+	if Input.is_action_pressed("Interact"):
+		if $Node3D/Camera3D/RayCast3D.is_colliding():
+			seenObject = $Node3D/Camera3D/RayCast3D.get_collider()
+			if seenObject.is_in_group("Interactable"):
+				seenObject.interacted_with.emit()
+
 
 	if currentTarget != null:
 		currentTarget.linear_damp = 10
@@ -56,6 +67,7 @@ func _physics_process(delta):
 		lastTarget.can_sleep = true
 		lastTarget.linear_damp = 0
 		lastTarget.linear_damp = 0
+
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jumpVelocity

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bjyrsb23glnrw"
-path="res://.godot/imported/LowPolyForest.fbx-46b698cd82c0406a9f0504e3b5fb8b00.scn"
+path="res://.godot/imported/LowPolyForest.fbx-89ff2e4827b6395f5de61e4384011d65.scn"
 
 [deps]
 
-source_file="res://Models/forest/LowPolyForest.fbx"
-dest_files=["res://.godot/imported/LowPolyForest.fbx-46b698cd82c0406a9f0504e3b5fb8b00.scn"]
+source_file="res://models/forest/LowPolyForest.fbx"
+dest_files=["res://.godot/imported/LowPolyForest.fbx-89ff2e4827b6395f5de61e4384011d65.scn"]
 
 [params]
 
