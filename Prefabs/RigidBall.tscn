@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://0dxd1iuv8lna"]
+
+[ext_resource type="Texture2D" uid="uid://ck2qkskenqxs3" path="res://Addon/Kenney/addons/kenney_prototype_textures/purple/texture_05.png" id="1_esc80"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qe4vx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynpfk"]
+albedo_texture = ExtResource("1_esc80")
+roughness = 0.0
+texture_filter = 0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yl6sx"]
+
+[node name="Ball" type="RigidBody3D" groups=["Physics"]]
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_qe4vx")
+surface_material_override/0 = SubResource("StandardMaterial3D_ynpfk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_yl6sx")
