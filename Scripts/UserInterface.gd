@@ -21,7 +21,7 @@ func _on_hunger_timer_timeout():
 
 func checkIfStarving():
 	if hungerValue <= 30:
-		$StarvingLabel.show()
+		$Hunger/StarvingLabel.show()
 		healthValue -= 2
 
 func clampValues():

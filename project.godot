@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-References="*res://Scripts/references.gd"
+References="*res://scripts/references.gd"
 
 [dotnet]
 
@@ -84,6 +84,7 @@ Interact={
 
 [physics]
 
+common/physics_ticks_per_second=120
 3d/default_gravity=18.0
 
 [rendering]

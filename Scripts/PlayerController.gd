@@ -11,6 +11,7 @@ signal interacted_with
 
 @onready var camera = $Node3D/Camera3D
 @onready var interactionTimeOut = $InteractionTimer
+@onready var eatingSound = $Audio/AudioStreamPlayer
 
 var userInterface = load("res://Prefabs/UI.tscn")
 var loadUserInterface = userInterface.instantiate()
