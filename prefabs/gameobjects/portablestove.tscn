@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://df58gghqed2tp"]
 
-[ext_resource type="Script" path="res://prefabs/gameobjects/portablestove.gd" id="1_nmigv"]
+[ext_resource type="Script" path="res://scripts/portablestove.gd" id="1_nmigv"]
 [ext_resource type="AudioStream" uid="uid://cd0kci2t6dtmb" path="res://audio/objects/frying.ogg" id="1_qekla"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hwhc3"]

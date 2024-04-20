@@ -2,15 +2,18 @@ extends Control
 
 @export var hungerValue = 100
 @export var healthValue = 100
+@export var moneyValue = 0
 
 @onready var hungerTimer = $Hunger/HungerTimer
 @onready var hungerLabel = $Hunger/HungerLabel
 @onready var healthLabel = $Hunger/HealthLabel
+@onready var moneyLabel = $Money/MoneyLabel
+@onready var backGround = $ColorRect
 
 @onready var randomGenerator = RandomNumberGenerator.new()
 
 func _ready():
-	References.UI = self
+	references.UI = self
 
 func _on_hunger_timer_timeout():
 	hungerValue -= 1
@@ -21,7 +24,6 @@ func _on_hunger_timer_timeout():
 
 func checkIfStarving():
 	if hungerValue <= 30:
-		$Hunger/StarvingLabel.show()
 		healthValue -= 2
 
 func clampValues():
@@ -35,9 +37,28 @@ func clampValues():
 		healthValue = 0
 
 func drawLabels():
-	hungerLabel.text = ("Hunger: " + str(hungerValue) + "%")
+	hungerLabel.text = ("Food: " + str(hungerValue) + "%")
 	healthLabel.text = ("Health: " + str(healthValue) + "%")
+	moneyLabel.text = ("Money: " + str(moneyValue) + "$")
 
-func _process(delta):
+var deathMessageShown = false
+
+func gameOver():
+	if healthValue == 0 and !deathMessageShown:
+		add_child(loadGameOver)
+		references.Player.playerIsDead = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		hungerLabel.hide()
+		healthLabel.hide()
+		moneyLabel.hide()
+		backGround.hide()
+		deathMessageShown = true
+
+
+var gameOverScreen = load("res://prefabs/gameover_screen.tscn")
+var loadGameOver = gameOverScreen.instantiate()
+
+func _process(_delta):
+	gameOver()
 	clampValues()
 	drawLabels()

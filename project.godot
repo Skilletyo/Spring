@@ -15,9 +15,13 @@ run/main_scene="res://main_level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
+
 [autoload]
 
-References="*res://scripts/references.gd"
+references="*res://scripts/references.gd"
 
 [dotnet]
 
@@ -26,6 +30,10 @@ project/assembly_name="Spring"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/yamms/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
@@ -84,7 +92,6 @@ Interact={
 
 [physics]
 
-common/physics_ticks_per_second=120
 3d/default_gravity=18.0
 
 [rendering]

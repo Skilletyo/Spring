@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cha5qy70661v6"]
+[gd_scene load_steps=4 format=3 uid="uid://cha5qy70661v6"]
 
 [ext_resource type="Script" path="res://scripts/user_interface.gd" id="1_vjl2p"]
 
-[node name="Control" type="Control"]
+[sub_resource type="Gradient" id="Gradient_2rtxt"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.649351)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ktp4"]
+gradient = SubResource("Gradient_2rtxt")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,35 +22,77 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vjl2p")
+hungerValue = 0
+healthValue = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 108.0
+offset_bottom = 94.0
+color = Color(0, 0, 0, 0.615686)
 
 [node name="Hunger" type="Control" parent="."]
 anchors_preset = 0
+offset_top = 36.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 76.0
+metadata/_edit_group_ = true
 
 [node name="HungerLabel" type="Label" parent="Hunger"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 1.0
-offset_top = 60.0
-offset_right = 1132.0
-offset_bottom = 83.0
-text = "Hunger: "
+offset_top = 17.0
+offset_right = 1131.0
+offset_bottom = 40.0
+text = "Hunger: 100%"
 
 [node name="HealthLabel" type="Label" parent="Hunger"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 1131.0
 offset_bottom = 23.0
-text = "Health: "
-
-[node name="StarvingLabel" type="Label" parent="Hunger"]
-visible = false
-layout_mode = 0
-offset_top = 83.0
-offset_right = 1131.0
-offset_bottom = 106.0
-text = "I am starving! :("
+text = "Health: 100%"
 
 [node name="HungerTimer" type="Timer" parent="Hunger"]
 autostart = true
+
+[node name="Money" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 36.0
+offset_right = 109.0
+offset_bottom = 94.0
+
+[node name="MoneyLabel" type="Label" parent="Money"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 35.0
+offset_right = 62.0
+offset_bottom = 61.0
+text = "Money: "
+horizontal_alignment = 2
+
+[node name="Reticle" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Reticle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Reticle/CenterContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("GradientTexture2D_5ktp4")
 
 [connection signal="timeout" from="Hunger/HungerTimer" to="." method="_on_hunger_timer_timeout"]
