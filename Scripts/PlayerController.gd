@@ -35,6 +35,7 @@ var fishPrefab
 var reelSpeed = 10.0 # Adjust this value to control the speed of reeling
 var deleteThreshold = 1.0 # Adjust this value to set the threshold distance for deleting the bob
 var isReeling = false # Flag to track if the player is reeling in
+var canReel = false
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -116,12 +117,14 @@ func _input(event):
 func _process(delta):
 	if Input.is_action_just_pressed("Cast") && bobInstance == null:
 		cast()
-	if Input.is_action_pressed("ReelIn"):
+	if Input.is_action_pressed("ReelIn") && canReel:
 		start_reeling()
 	if isReeling and bobInstance:
 		reel_in(delta)
 
 func cast():
+	$ReelTimer.wait_time = randf_range(2.0, 4.0)
+	$ReelTimer.start()
 	# Instantiate the bob scene
 	var bob = bobPrefab.instantiate()
 	get_parent().add_child(bob) # Add the bob to the player's parent node
@@ -134,7 +137,10 @@ func cast():
 	
 	# Store reference to the bob instance
 	set_bob_instance(bob)
-
+	
+	#Reset color of the bob
+	bobInstance.get_child(0).get_active_material(0).albedo_color = Color.RED
+	
 	# Get the direction the rod is facing
 	var direction = -global_transform.basis.z.normalized()
 	
@@ -176,6 +182,8 @@ func reel_in(delta):
 			stop_reeling()
 			catch_fish()
 			delete_bob()
+			canReel = false
+			
 
 func catch_fish():
 	if fishInstance:
@@ -185,7 +193,7 @@ func catch_fish():
 		get_parent().add_child(fishInstance)  # Adjust the parent node as needed
 		# Set the position of the fish relative to the player's feet
 		var player_feet_position = global_transform.origin  # Assuming the player's position is at its feet
-		fishInstance.global_transform.origin = player_feet_position - Vector3(0, 1, 0)  # Adjust the offset as needed
+		fishInstance.global_transform.origin = player_feet_position + Vector3(0, 2, 0)
 		fishInstance.add_to_group("Physics")
 		# Perform any additional actions, e.g., increasing player's score
 	# Delete the bob
@@ -200,4 +208,6 @@ func delete_bob():
 func set_bob_instance(instance):
 	bobInstance = instance
 
-
+func _on_reel_timer_timeout():
+	bobInstance.get_child(0).get_active_material(0).albedo_color = Color.BLUE
+	canReel = true

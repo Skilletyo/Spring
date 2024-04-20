@@ -71,3 +71,8 @@ expand_mode = 1
 
 [node name="InteractionTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="ReelTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ReelTimer" to="." method="_on_reel_timer_timeout"]

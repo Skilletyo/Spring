@@ -30,8 +30,9 @@ _data = {
 "Armature|Swim": SubResource("Animation_u145d")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wmowe"]
-size = Vector3(0.250977, 1.96442, 1.11829)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1o67"]
+radius = 0.454209
+height = 2.00985
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry8ap"]
 resource_name = "Outline"
@@ -127,8 +128,8 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00439453, 0.0591431, -0.225464)
-shape = SubResource("BoxShape3D_wmowe")
+transform = Transform3D(0.5, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.207755)
+shape = SubResource("CapsuleShape3D_y1o67")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(25, 0, 0, 0, -2.98023e-06, 25, 0, -25, -2.98023e-06, 0, 0, 0)
