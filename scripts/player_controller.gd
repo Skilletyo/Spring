@@ -13,7 +13,7 @@ signal interacted_with
 @onready var interactionTimeOut = $InteractionTimer
 @onready var eatingSound = $Audio/AudioStreamPlayer
 
-var userInterface = load("res://prefabs/ui.tscn")
+var userInterface = load("res://prefabs/UI.tscn")
 var loadUserInterface = userInterface.instantiate()
 
 var seenObject = null
@@ -27,7 +27,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	References.Player = self
+	references.Player = self
 	add_child(loadUserInterface)
 
 func _physics_process(delta):
@@ -58,12 +58,15 @@ func playerMovement(delta):
 
 func interactWithObject():
 	if Input.is_action_pressed("Interact"):
+		print("Interact pressed")
 		if $Node3D/Camera3D/RayCast3D.is_colliding():
 			seenObject = $Node3D/Camera3D/RayCast3D.get_collider()
-			if seenObject.is_in_group("Interactable") && canInteract:
-				seenObject.interacted_with.emit()
-				canInteract = false
-				interactionTimeOut.start(1)
+			print("Got collider")
+			if seenObject.is_in_group("Interactable") and canInteract == true:
+					seenObject.interacted_with.emit()
+					canInteract = false
+					interactionTimeOut.start(1)
+					print("Sent interaction signal")
 
 func pickObject():
 	if Input.is_action_pressed("Pickup"):
@@ -71,6 +74,7 @@ func pickObject():
 			seenObject = $Node3D/Camera3D/RayCast3D.get_collider()
 			if seenObject.is_in_group("Physics"):
 				currentTarget = seenObject
+				print("Applying force...")
 	else:
 		currentTarget = null
 

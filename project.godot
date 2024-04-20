@@ -21,7 +21,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
 [autoload]
 
-References="*res://scripts/references.gd"
+references="*res://scripts/references.gd"
 
 [dotnet]
 

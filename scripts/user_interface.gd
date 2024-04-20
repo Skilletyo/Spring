@@ -10,7 +10,7 @@ extends Control
 @onready var randomGenerator = RandomNumberGenerator.new()
 
 func _ready():
-	References.UI = self
+	references.UI = self
 
 func _on_hunger_timer_timeout():
 	hungerValue -= 1

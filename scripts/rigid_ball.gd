@@ -12,4 +12,4 @@ func _process(delta):
 
 func _on_interacted_with():
 	print("Nom")
-	References.UI.hungerValue += 10
+	references.UI.hungerValue += 10
