@@ -2,10 +2,12 @@ extends Control
 
 @export var hungerValue = 100
 @export var healthValue = 100
+@export var moneyValue = 0
 
 @onready var hungerTimer = $Hunger/HungerTimer
 @onready var hungerLabel = $Hunger/HungerLabel
 @onready var healthLabel = $Hunger/HealthLabel
+@onready var moneyLabel = $Money/MoneyLabel
 
 @onready var randomGenerator = RandomNumberGenerator.new()
 
@@ -37,7 +39,20 @@ func clampValues():
 func drawLabels():
 	hungerLabel.text = ("Hunger: " + str(hungerValue) + "%")
 	healthLabel.text = ("Health: " + str(healthValue) + "%")
+	moneyLabel.text = ("Money: " + str(moneyValue) + "$")
+
+var deathMessageShown = false
+
+func gameOver():
+	if healthValue == 0 and !deathMessageShown:
+		add_child(loadGameOver)
+		deathMessageShown = true
+
+
+var gameOverScreen = load("res://prefabs/gameover_screen.tscn")
+var loadGameOver = gameOverScreen.instantiate()
 
 func _process(delta):
+	gameOver()
 	clampValues()
 	drawLabels()

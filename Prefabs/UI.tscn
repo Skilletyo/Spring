@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cha5qy70661v6"]
+[gd_scene load_steps=4 format=3 uid="uid://cha5qy70661v6"]
 
 [ext_resource type="Script" path="res://scripts/user_interface.gd" id="1_vjl2p"]
 
-[node name="Control" type="Control"]
+[sub_resource type="Gradient" id="Gradient_2rtxt"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.649351)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ktp4"]
+gradient = SubResource("Gradient_2rtxt")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vjl2p")
+healthValue = 0
 
 [node name="Hunger" type="Control" parent="."]
 anchors_preset = 0
@@ -40,5 +53,39 @@ text = "I am starving! :("
 
 [node name="HungerTimer" type="Timer" parent="Hunger"]
 autostart = true
+
+[node name="Reticle" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Reticle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Reticle/CenterContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("GradientTexture2D_5ktp4")
+
+[node name="Money" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MoneyLabel" type="Label" parent="Money"]
+layout_mode = 0
+offset_top = 625.0
+offset_right = 57.0
+offset_bottom = 648.0
+text = "Money: "
+horizontal_alignment = 2
 
 [connection signal="timeout" from="Hunger/HungerTimer" to="." method="_on_hunger_timer_timeout"]
