@@ -3,7 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b3sk8m15ebrhc" path="res://Models/forest/meshes/Root Scene_tree.res" id="1_t1h44"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hs6be"]
-radius = 1.0
+radius = 0.6
 height = 10.0
 
 [node name="TreeOne" type="MeshInstance3D"]

@@ -2,12 +2,57 @@
 
 [node name="Landscape" type="Node3D"]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="Floor" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-size = Vector3(100, 2, 100)
+[node name="Floor" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+size = Vector3(100, 2, 109)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, -38.5)
-size = Vector3(61, 7, 23)
+[node name="Hills" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19305, 2.5, -40.5)
+size = Vector3(61, 7, 19)
+
+[node name="Ramp" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -31, 2.72724, -25.5801)
+size = Vector3(20, 1, 10)
+
+[node name="Lake" type="CSGSphere3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 1.23585, 5, 4.33181)
+operation = 2
+radius = 14.0
+
+[node name="HalfIsland1" type="CSGCylinder3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 34, 0, 59)
+radius = 16.0
+sides = 16
+
+[node name="HalfIsland2" type="CSGCylinder3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -34, 0, 59)
+radius = 16.0
+sides = 16
+
+[node name="Bay" type="CSGCylinder3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 59)
+operation = 2
+radius = 18.0
+sides = 16
+
+[node name="Mountain" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Mountain"]
+transform = Transform3D(1, 0, 0, 0, 0.72, 0, 0, 0, 1, -32, 2, -42)
+
+[node name="Mountain" type="CSGBox3D" parent="Mountain/CSGBox3D"]
+transform = Transform3D(0.707107, -0.707107, 5.98811e-08, 0.541675, 0.541675, 0.642788, -0.45452, -0.454519, 0.766044, 1, 7.5, -2)
+size = Vector3(20, 20, 20)
+
+[node name="Cave" type="CSGBox3D" parent="Mountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 11.5, -36.5)
+operation = 2
+size = Vector3(2, 3, 7)
+
+[node name="Cave2" type="CSGBox3D" parent="Mountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 12, -43.5)
+operation = 2
+size = Vector3(8, 4, 9)
