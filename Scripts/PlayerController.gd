@@ -24,6 +24,18 @@ var mouseMath = (mouseSensitivity) / 1000
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Fishing variables
+var bobPrefab # Reference to the bob scene
+var castForce = 25 # Adjust this to control the force of the cast
+var rod # Reference to the rod node
+
+var bobInstance = null # Reference to the bob instance
+var fishInstance # Reference to the attached fish instance
+var fishPrefab
+var reelSpeed = 10.0 # Adjust this value to control the speed of reeling
+var deleteThreshold = 1.0 # Adjust this value to set the threshold distance for deleting the bob
+var isReeling = false # Flag to track if the player is reeling in
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
@@ -31,6 +43,13 @@ func _ready():
 	References.Player = self
 	
 	add_child(loadUserInterface)
+	
+# Initialize references
+	# Load the bob scene
+	bobPrefab = preload("res://Prefabs/bob.tscn")
+	fishPrefab = preload("res://Prefabs/fish.tscn")
+	# Assuming the rod is a child of the player, get its reference
+	rod = $Node3D/Camera3D/Hand3D/FishingRod
 
 func _physics_process(delta):
 
@@ -92,3 +111,90 @@ func _input(event):
 		rotate_y(-event.relative.x * mouseMath)
 		$Node3D.rotate_x(-event.relative.y * mouseMath)
 		$Node3D.rotation.x = clamp($Node3D.rotation.x, -1.5, 1.5)
+
+# Fishing Logic
+func _process(delta):
+	if Input.is_action_just_pressed("Cast") && bobInstance == null:
+		cast()
+	if Input.is_action_pressed("ReelIn"):
+		start_reeling()
+	if isReeling and bobInstance:
+		reel_in(delta)
+
+func cast():
+	# Instantiate the bob scene
+	var bob = bobPrefab.instantiate()
+	get_parent().add_child(bob) # Add the bob to the player's parent node
+	
+	# Set the bob's initial position relative to the player's forward direction
+	var spawnDistance = 2.0 # Adjust this value to set the distance from the player
+	var spawnOffset = global_transform.basis.x.normalized() * 0.5 # Adjust the offset to move the bob to the right
+	var spawnPosition = global_transform.origin + global_transform.basis.z.normalized() * spawnDistance + spawnOffset
+	bob.global_transform.origin = spawnPosition
+	
+	# Store reference to the bob instance
+	set_bob_instance(bob)
+
+	# Get the direction the rod is facing
+	var direction = -global_transform.basis.z.normalized()
+	
+	# Calculate the straight-line force
+	var straightForce = direction * castForce
+	
+	# Calculate the upward force based on the angle of the rod
+	var rodUpwardAngle = clamp(global_transform.basis.y.angle_to(Vector3.UP), 0, PI/2) # Angle between player's upward direction and global upward direction
+	var upwardForce = Vector3(0, sin(rodUpwardAngle), cos(rodUpwardAngle)) * castForce * 0.5 # Apply half of the force upward
+	
+	# Combine the straight and upward forces
+	var totalForce = straightForce + upwardForce
+	
+	# Apply the combined force to the bob
+	bob.apply_central_impulse(totalForce)
+
+
+func start_reeling():
+	isReeling = true
+	if bobInstance and not fishInstance:
+		attach_fish()
+
+func stop_reeling():
+	isReeling = false
+
+func attach_fish():
+	# Spawn fish and attach it to the bob
+	var fish = fishPrefab.instantiate()
+	bobInstance.add_child(fish)
+	fishInstance = fish
+
+func reel_in(delta):
+	if bobInstance:
+		var direction_to_bob = bobInstance.global_transform.origin - global_transform.origin
+		bobInstance.translate(-direction_to_bob.normalized() * reelSpeed * delta)
+		
+		# Check if the bob has reached the player's position
+		if direction_to_bob.length() < deleteThreshold:
+			stop_reeling()
+			catch_fish()
+			delete_bob()
+
+func catch_fish():
+	if fishInstance:
+		if fishInstance.get_parent() != null:
+			fishInstance.get_parent().remove_child(fishInstance)
+		# Reparent the fish to another node or the player
+		# For example, reparent to the player's parent node
+		get_parent().add_child(fishInstance)
+		# Perform any additional actions, e.g., increasing player's score
+		fishInstance.global_transform.origin = Vector3(0, 1, 0)  # Adjust the position as needed
+	# Delete the bob
+	fishInstance = null
+
+func delete_bob():
+	if bobInstance:
+		bobInstance.queue_free()
+		bobInstance = null
+
+func set_bob_instance(instance):
+	bobInstance = instance
+
+

@@ -4,6 +4,7 @@ uniform vec3 water_color : source_color = vec3(0.0, 0.25, 0.45);
 uniform vec3 water_color2 : source_color = vec3(0.0, 0.25, 0.45);
 uniform float roughness : hint_range(0.0, 1.0) = 0.4;
 
+uniform float wave_time = 0;
 uniform sampler2D wave_texture;
 uniform float wave_scale = 64.0;
 uniform float height_scale = 0.85;
@@ -19,7 +20,7 @@ uniform float wave_speed : hint_range(0.0, 0.2) = 0.015;
 void vertex() {
 	// Vertext displacement for waves
 	uv_world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	wave_height = texture(wave_texture, uv_world_pos.xz / wave_scale + TIME * wave_speed).r;
+	wave_height = texture(wave_texture, uv_world_pos.xz / wave_scale + wave_time * wave_speed).r;
 	VERTEX.y += wave_height * height_scale;
 }
 
