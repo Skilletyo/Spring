@@ -181,12 +181,15 @@ func catch_fish():
 	if fishInstance:
 		if fishInstance.get_parent() != null:
 			fishInstance.get_parent().remove_child(fishInstance)
-		# Reparent the fish to another node or the player
-		# For example, reparent to the player's parent node
-		get_parent().add_child(fishInstance)
+		# Reparent the fish to the player's parent node (or another appropriate node)
+		get_parent().add_child(fishInstance)  # Adjust the parent node as needed
+		# Set the position of the fish relative to the player's feet
+		var player_feet_position = global_transform.origin  # Assuming the player's position is at its feet
+		fishInstance.global_transform.origin = player_feet_position - Vector3(0, 1, 0)  # Adjust the offset as needed
+		fishInstance.add_to_group("Physics")
 		# Perform any additional actions, e.g., increasing player's score
-		fishInstance.global_transform.origin = Vector3(0, 1, 0)  # Adjust the position as needed
 	# Delete the bob
+	delete_bob()
 	fishInstance = null
 
 func delete_bob():

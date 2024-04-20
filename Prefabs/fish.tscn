@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://kmd1j17r0bu4"]
+[gd_scene load_steps=9 format=3 uid="uid://kmd1j17r0bu4"]
 
 [sub_resource type="Animation" id="Animation_u145d"]
 resource_name = "Armature|Swim"
@@ -29,6 +29,9 @@ tracks/2/keys = PackedFloat32Array(0, 1, -0.0548555, 5.25903e-10, 1.09405e-08, 0
 _data = {
 "Armature|Swim": SubResource("Animation_u145d")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmowe"]
+size = Vector3(0.250977, 1.96442, 1.11829)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry8ap"]
 resource_name = "Outline"
@@ -116,11 +119,16 @@ bind/5/bone = -1
 bind/5/pose = Transform3D(1, -3.08705e-07, 3.08398e-06, -2.76771e-13, -0.995027, -0.0996015, 3.0994e-06, 0.0996015, -0.995027, -2.42856e-05, -0.0184689, 0.0012493)
 
 [node name="Fish" type="RigidBody3D"]
+collision_layer = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_s63gd")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00439453, 0.0591431, -0.225464)
+shape = SubResource("BoxShape3D_wmowe")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(25, 0, 0, 0, -2.98023e-06, 25, 0, -25, -2.98023e-06, 0, 0, 0)
