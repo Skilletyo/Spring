@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckrtem21dwq41"
-path="res://.godot/imported/FishV1.fbx-fa2a6e722275cbca8b807b2cb4f97219.scn"
+uid="uid://ecnquna1jbyl"
+path="res://.godot/imported/fish_01.glb-d23fab4d3f679ea07c7d0d21f91bf3a8.scn"
 
 [deps]
 
-source_file="res://models/fish/meshes/FishV1.fbx"
-dest_files=["res://.godot/imported/FishV1.fbx-fa2a6e722275cbca8b807b2cb4f97219.scn"]
+source_file="res://models/fish/meshes/fish_01.glb"
+dest_files=["res://.godot/imported/fish_01.glb-d23fab4d3f679ea07c7d0d21f91bf3a8.scn"]
 
 [params]
 
@@ -31,7 +31,7 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "meshes": {
-"Root Scene_FishV1": {
+"fish_01_Cube_021": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -39,7 +39,7 @@ _subresources={
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
 "save_to_file/make_streamable": "",
-"save_to_file/path": "res://fish.res"
+"save_to_file/path": "res://models/fish/meshes/fish_01.res"
 }
 }
 }

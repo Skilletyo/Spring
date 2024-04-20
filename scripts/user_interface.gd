@@ -41,7 +41,7 @@ func drawLabels():
 	healthLabel.text = ("Health: " + str(healthValue) + "%")
 	moneyLabel.text = ("Money: " + str(moneyValue) + "$")
 
-var deathMessageShown = false
+@onready var deathMessageShown = false
 
 func gameOver():
 	if healthValue == 0 and !deathMessageShown:
@@ -53,6 +53,16 @@ func gameOver():
 		moneyLabel.hide()
 		backGround.hide()
 		deathMessageShown = true
+
+@onready var mouseIsShown = false
+
+func _input(_event):
+	if Input.is_action_just_pressed("Escape") and !mouseIsShown:
+		mouseIsShown = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	elif Input.is_action_just_pressed("Escape") and mouseIsShown:
+		mouseIsShown = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 var gameOverScreen = load("res://prefabs/gameover_screen.tscn")
