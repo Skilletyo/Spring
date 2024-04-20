@@ -1,8 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://w0vqd0dr1ii"]
+[gd_scene load_steps=7 format=3 uid="uid://w0vqd0dr1ii"]
 
-[ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="1_r4a4f"]
 [ext_resource type="Texture2D" uid="uid://v2t3g2i7amrx" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_tu3sq"]
-[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://prefabs/gameobjects/player.tscn" id="2_wayho"]
 [ext_resource type="PackedScene" uid="uid://0dxd1iuv8lna" path="res://prefabs/gameobjects/rigidball.tscn" id="3_eclt4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4qqbu"]
@@ -39,11 +37,5 @@ material_override = SubResource("StandardMaterial3D_ffywq")
 use_collision = true
 size = Vector3(43.9182, 1.49219, 35.678)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_wayho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41089, 2.18433, 4.88989)
-
 [node name="Ball" parent="." instance=ExtResource("3_eclt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29126, 2.96558, 0.192017)
-
-[node name="Smoother" type="Node" parent="."]
-script = ExtResource("1_r4a4f")

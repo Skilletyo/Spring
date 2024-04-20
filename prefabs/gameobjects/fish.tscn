@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2bwtv4h5hfb"]
 
-[ext_resource type="ArrayMesh" uid="uid://ctx43c7q1m2j6" path="res://fish.res" id="1_h036g"]
+[ext_resource type="ArrayMesh" uid="uid://ctx43c7q1m2j6" path="res://models/fish/fish.res" id="1_h036g"]
 [ext_resource type="Script" path="res://scripts/fish_small.gd" id="1_r4v82"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u57lr"]
