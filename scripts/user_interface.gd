@@ -23,7 +23,6 @@ func _on_hunger_timer_timeout():
 
 func checkIfStarving():
 	if hungerValue <= 30:
-		$Hunger/StarvingLabel.show()
 		healthValue -= 2
 
 func clampValues():
@@ -46,6 +45,11 @@ var deathMessageShown = false
 func gameOver():
 	if healthValue == 0 and !deathMessageShown:
 		add_child(loadGameOver)
+		references.Player.playerIsDead = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		hungerLabel.hide()
+		healthLabel.hide()
+		moneyLabel.hide()
 		deathMessageShown = true
 
 
