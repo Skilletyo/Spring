@@ -14,6 +14,7 @@ height = 0.32457
 size = Vector3(1, 0.239258, 1)
 
 [node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 2
 script = ExtResource("1_nmigv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

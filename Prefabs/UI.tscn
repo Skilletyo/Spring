@@ -22,8 +22,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vjl2p")
-hungerValue = 0
-healthValue = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
