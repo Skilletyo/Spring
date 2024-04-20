@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmx2b8jcwtt75"]
+
+[ext_resource type="ArrayMesh" uid="uid://dc2wy4krkkxxk" path="res://models/Bottle.res" id="1_v4hfa"]
+[ext_resource type="Material" uid="uid://xwq6la1e7447" path="res://materials/Cork.tres" id="2_ys1ya"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_swhs2"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rofsu"]
+noise = SubResource("FastNoiseLite_swhs2")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xoyea"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c3vr3"]
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_xoyea")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15n3e"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+depth_draw_mode = 2
+albedo_color = Color(0.0352941, 0.0862745, 0.133333, 1)
+metallic = 1.0
+roughness_texture = SubResource("NoiseTexture2D_c3vr3")
+normal_texture = SubResource("NoiseTexture2D_rofsu")
+uv1_triplanar = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_joeqx"]
+points = PackedVector3Array(1.94567, 0.225812, -0.290971, -1.92052, 0.25342, -0.437544, -1.91656, 0.263164, 0.450571, 0.640294, 10.0701, -0.78529, 0.447194, 6.02552, 1.91585, 0.450571, 0.263164, -1.91656, -0.943822, 10.0701, -0.309692, 0.304703, 0.229138, 1.94432, -0.573182, 6.01337, -1.87936, -1.58547, 6.0113, 1.16528, 1.91585, 6.02552, 0.447194, 1.16488, 6.01128, -1.5858, 0.323632, 10.0701, 0.957762, -1.87936, 6.01337, -0.573182, 1.46143, 0.342263, 1.31628, -1.15616, 0.34344, -1.59298, -0.87061, 0.316505, 1.7625, -0.569261, 6.00651, 1.88055, 1.88055, 6.00651, -0.569261, -0.943822, 9.43456, 0.79923, 1.15849, 6.00568, 1.59095, 0.957762, 10.0701, 0.323632, 1.46805, 0.321094, -1.3083, -0.784886, 9.43456, -0.943822, -1.87547, 6.01128, 0.585928, 0.58559, 6.01134, -1.87557, -1.42116, 6.13967, -1.27831, -0.309289, 10.0701, -0.943822, -0.437544, 0.25342, -1.92052, -1.58547, 0.51025, 1.16528, 1.94432, 0.229138, 0.304703, 1.59062, 6.00571, 1.15888)
+
+[node name="Bottle" type="RigidBody3D" groups=["Physics"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, 0.000946045, 0.00012207)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = ExtResource("1_v4hfa")
+surface_material_override/0 = ExtResource("2_ys1ya")
+surface_material_override/1 = SubResource("StandardMaterial3D_15n3e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_joeqx")

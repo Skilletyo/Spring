@@ -8,7 +8,6 @@ points = PackedVector3Array(0.183029, 0.120605, 0.00614397, -0.397116, 0.0128681
 
 [node name="fish" type="RigidBody3D" groups=["Food", "Interactable", "Physics"]]
 collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_r4v82")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
