@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://cxy6c5mbaekek"]
 
 [ext_resource type="Shader" path="res://VFX/outline_sobol.gdshader" id="1_snj8v"]
-[ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://vfx/Vignette2048x1024.png" id="2_2bx5a"]
+[ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://vfx/vignette2048x1024.png" id="2_2bx5a"]
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_wak7x"]
 [ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_647ns"]
 [ext_resource type="ArrayMesh" uid="uid://e0wiltkwetym" path="res://models/forest/meshes/Root Scene_stone2.res" id="5_voprw"]

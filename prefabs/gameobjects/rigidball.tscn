@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://0dxd1iuv8lna"]
 
-[ext_resource type="Texture2D" uid="uid://ck2qkskenqxs3" path="res://addons/kenney/addons/kenney_prototype_textures/purple/texture_05.png" id="1_esc80"]
-[ext_resource type="Script" path="res://scripts/rigidball.gd" id="1_igg0g"]
+[ext_resource type="Texture2D" uid="uid://ck2qkskenqxs3" path="res://addons/kenney_prototype_textures/purple/texture_05.png" id="1_esc80"]
+[ext_resource type="Script" path="res://scripts/rigid_ball.gd" id="1_igg0g"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_qe4vx"]
 
