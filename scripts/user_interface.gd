@@ -8,6 +8,7 @@ extends Control
 @onready var hungerLabel = $Hunger/HungerLabel
 @onready var healthLabel = $Hunger/HealthLabel
 @onready var moneyLabel = $Money/MoneyLabel
+@onready var backGround = $ColorRect
 
 @onready var randomGenerator = RandomNumberGenerator.new()
 
@@ -36,7 +37,7 @@ func clampValues():
 		healthValue = 0
 
 func drawLabels():
-	hungerLabel.text = ("Hunger: " + str(hungerValue) + "%")
+	hungerLabel.text = ("Food: " + str(hungerValue) + "%")
 	healthLabel.text = ("Health: " + str(healthValue) + "%")
 	moneyLabel.text = ("Money: " + str(moneyValue) + "$")
 
@@ -50,13 +51,14 @@ func gameOver():
 		hungerLabel.hide()
 		healthLabel.hide()
 		moneyLabel.hide()
+		backGround.hide()
 		deathMessageShown = true
 
 
 var gameOverScreen = load("res://prefabs/gameover_screen.tscn")
 var loadGameOver = gameOverScreen.instantiate()
 
-func _process(delta):
+func _process(_delta):
 	gameOver()
 	clampValues()
 	drawLabels()

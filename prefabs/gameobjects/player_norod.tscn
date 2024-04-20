@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_c6ywk"]
 [ext_resource type="Shader" path="res://VFX/outline_sobol.gdshader" id="3_rthfj"]
-[ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://VFX/Vignette2048x1024.png" id="4_gww4v"]
+[ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://vfx/Vignette2048x1024.png" id="4_gww4v"]
 [ext_resource type="AudioStream" uid="uid://c7fvlnufp8c0m" path="res://audio/player/crunch.ogg" id="5_cupl7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_b4w05"]
@@ -23,7 +23,7 @@ shader_parameter/transparency = 0.85
 material = SubResource("ShaderMaterial_2ukfv")
 size = Vector2(2, 2)
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_c6ywk")
 speed = 3.0
