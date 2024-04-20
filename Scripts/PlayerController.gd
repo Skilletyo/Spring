@@ -209,5 +209,5 @@ func set_bob_instance(instance):
 	bobInstance = instance
 
 func _on_reel_timer_timeout():
-	bobInstance.get_child(0).get_active_material(0).albedo_color = Color.BLUE
+	bobInstance.get_child(0).get_active_material(0).albedo_color = Color.GREEN
 	canReel = true
