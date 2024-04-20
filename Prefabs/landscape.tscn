@@ -9,10 +9,6 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
 size = Vector3(100, 2, 109)
 
-[node name="Hills" type="CSGBox3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19305, 2.5, -40.5)
-size = Vector3(61, 7, 19)
-
 [node name="Ramp" type="CSGBox3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -31, 2.72724, -25.5801)
 size = Vector3(20, 1, 10)
@@ -21,24 +17,27 @@ size = Vector3(20, 1, 10)
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 1.23585, 5, 4.33181)
 operation = 2
 radius = 14.0
+radial_segments = 32
+rings = 16
 
 [node name="HalfIsland1" type="CSGCylinder3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 34, 0, 59)
 radius = 16.0
-sides = 16
+sides = 32
 
 [node name="HalfIsland2" type="CSGCylinder3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -34, 0, 59)
 radius = 16.0
-sides = 16
+sides = 32
 
 [node name="Bay" type="CSGCylinder3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 59)
 operation = 2
 radius = 18.0
-sides = 16
+sides = 32
 
 [node name="Mountain" type="CSGCombiner3D" parent="."]
+use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Mountain"]
 transform = Transform3D(1, 0, 0, 0, 0.72, 0, 0, 0, 1, -32, 2, -42)
@@ -56,3 +55,11 @@ size = Vector3(2, 3, 7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 12, -43.5)
 operation = 2
 size = Vector3(8, 4, 9)
+
+[node name="Hills" type="CSGBox3D" parent="Mountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.69305, 2.5, -40.5)
+size = Vector3(64, 7, 19)
+
+[node name="Hills2" type="CSGBox3D" parent="Mountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.69305, 9.5, -41.5)
+size = Vector3(54, 7, 17)

@@ -9,7 +9,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_b4w05"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ulylq"]
-radius = 0.2
+radius = 0.3
 height = 1.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ukfv"]
@@ -39,10 +39,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("CapsuleShape3D_ulylq")
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 fov = 90.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Node3D/Camera3D"]
