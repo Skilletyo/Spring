@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://3jnla560gm26"]
+
+[ext_resource type="Script" path="res://Scripts/LineRenderer.gd" id="1_tsc8n"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_wc7sj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q56y2"]
+albedo_color = Color(0.992157, 0, 0.286275, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 12.22
+rim = 0.2
+rim_tint = 0.65
+
+[node name="LineRenderer" type="MeshInstance3D"]
+editor_description = "A line renderer."
+mesh = SubResource("ImmediateMesh_wc7sj")
+script = ExtResource("1_tsc8n")
+points = Array[Vector3]([Vector3(0, 0, 0), Vector3(0, 5, 0)])
+startThickness = 0.2
+endThickness = 0.2
+lineMaterial = SubResource("StandardMaterial3D_q56y2")

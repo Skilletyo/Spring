@@ -11,7 +11,7 @@ func _ready():
 	rope.start_point = start_point
 	rope.end_point = end_point
 	rope.rope_length = 2.5
-	rope.resolution = 6.0
+	rope.resolution = 4.0
 	rope.radius = 0.1
 	
 	var IsValidRope = rope.can_make()
