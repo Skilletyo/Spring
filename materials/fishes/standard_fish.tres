@@ -28,4 +28,3 @@ normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_c7jvh")
 uv1_scale = Vector3(2, 2, 2)
 uv1_triplanar = true
-uv1_world_triplanar = true
