@@ -131,7 +131,14 @@ func pickObject():
 		lastTarget.linear_damp = 0
 		lastTarget.linear_damp = 0
 
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _input(event):
+	if event is InputEventMouseButton:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 	if event is InputEventMouseMotion && !playerIsDead:
 		rotate_y(-event.relative.x * mouseMath)
 		$Node3D.rotate_x(-event.relative.y * mouseMath)

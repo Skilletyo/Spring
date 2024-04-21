@@ -1,33 +1,33 @@
-[gd_scene load_steps=86 format=3 uid="uid://i5kujxtp0aoe"]
+[gd_scene load_steps=87 format=3 uid="uid://i5kujxtp0aoe"]
 
-[ext_resource type="Material" uid="uid://cd002ua4sr5dl" path="res://Materials/water.material" id="3_81alb"]
+[ext_resource type="Material" uid="uid://cd002ua4sr5dl" path="res://materials/water.material" id="3_81alb"]
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
 [ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_xurpp"]
 [ext_resource type="Shader" path="res://materials/water_modified.gdshader" id="5_qko3u"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatter.gd" id="6_2c5a2"]
-[ext_resource type="PackedScene" uid="uid://3w3i6cba8o35" path="res://Prefabs/landscape.tscn" id="6_avqk7"]
-[ext_resource type="PackedScene" uid="uid://5diet84f3io2" path="res://Prefabs/gameobjects/barrel.tscn" id="6_ssdmx"]
+[ext_resource type="PackedScene" uid="uid://bfyxt1l8jo5if" path="res://prefabs/landscape.tscn" id="6_avqk7"]
+[ext_resource type="PackedScene" uid="uid://5diet84f3io2" path="res://prefabs/gameobjects/barrel.tscn" id="6_ssdmx"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterItem.gd" id="7_cavyc"]
-[ext_resource type="PackedScene" uid="uid://d1fdpa6v24m2j" path="res://Prefabs/pier_body.tscn" id="7_qmuo0"]
+[ext_resource type="PackedScene" path="res://prefabs/pier_body.tscn" id="7_qmuo0"]
 [ext_resource type="ArrayMesh" uid="uid://b3sk8m15ebrhc" path="res://models/forest/meshes/Root Scene_tree.res" id="7_y5l7b"]
-[ext_resource type="PackedScene" uid="uid://db53qa12vq5xi" path="res://Prefabs/cabin.tscn" id="8_lsqc1"]
-[ext_resource type="PackedScene" uid="uid://biuu0p2fomtw0" path="res://Prefabs/pier_pillar.tscn" id="8_p0pqc"]
+[ext_resource type="PackedScene" path="res://prefabs/cabin.tscn" id="8_lsqc1"]
+[ext_resource type="PackedScene" path="res://prefabs/pier_pillar.tscn" id="8_p0pqc"]
 [ext_resource type="ArrayMesh" uid="uid://bsajxbllaqfyl" path="res://models/forest/meshes/Root Scene_tree3.res" id="8_p3wx4"]
-[ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://Prefabs/tree_one.tscn" id="9_gpx65"]
+[ext_resource type="PackedScene" path="res://prefabs/tree_one.tscn" id="9_gpx65"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterExclude.gd" id="9_o8ud7"]
-[ext_resource type="PackedScene" uid="uid://cgjvpx8rh12jl" path="res://Prefabs/stone_02_.tscn" id="11_4c8uc"]
-[ext_resource type="PackedScene" path="res://Prefabs/mesh_combiner.tscn" id="11_vsc7i"]
+[ext_resource type="PackedScene" path="res://prefabs/stone_02_.tscn" id="11_4c8uc"]
+[ext_resource type="PackedScene" path="res://prefabs/mesh_combiner.tscn" id="11_vsc7i"]
 [ext_resource type="ArrayMesh" uid="uid://e0wiltkwetym" path="res://models/forest/meshes/Root Scene_stone2.res" id="12_2alg8"]
 [ext_resource type="ArrayMesh" uid="uid://vitvhdnbysqu" path="res://models/forest/meshes/Root Scene_stone4.res" id="12_t3rrh"]
-[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://Audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
-[ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://Prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
-[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://Prefabs/gameobjects/player.tscn" id="17_qkvsv"]
-[ext_resource type="PackedScene" uid="uid://bycgyba2nqpb7" path="res://Prefabs/ending_screen.tscn" id="20_0wjef"]
-[ext_resource type="PackedScene" uid="uid://b1vflu5ua03yx" path="res://Prefabs/sell_area.tscn" id="20_ch3ei"]
-[ext_resource type="PackedScene" uid="uid://cl5oxpfi7atqn" path="res://Prefabs/altar.tscn" id="21_jyw33"]
-[ext_resource type="Texture2D" uid="uid://dxkcbv61h5l87" path="res://Materials/SpringJamFish.png" id="24_qdk8x"]
-[ext_resource type="PackedScene" uid="uid://kxqbojegq5it" path="res://Prefabs/city.tscn" id="25_p1dt5"]
-[ext_resource type="PackedScene" uid="uid://cadd5plwm6ikr" path="res://Prefabs/player_detector.tscn" id="28_ckr7d"]
+[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
+[ext_resource type="PackedScene" path="res://prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
+[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://prefabs/gameobjects/player.tscn" id="17_qkvsv"]
+[ext_resource type="PackedScene" uid="uid://bwik4e43ahbx3" path="res://prefabs/ending_screen.tscn" id="20_0wjef"]
+[ext_resource type="PackedScene" uid="uid://cekhrl8014q43" path="res://prefabs/sell_area.tscn" id="20_ch3ei"]
+[ext_resource type="PackedScene" path="res://prefabs/altar.tscn" id="21_jyw33"]
+[ext_resource type="Texture2D" uid="uid://dxkcbv61h5l87" path="res://materials/SpringJamFish.png" id="24_qdk8x"]
+[ext_resource type="PackedScene" path="res://prefabs/city.tscn" id="25_p1dt5"]
+[ext_resource type="PackedScene" uid="uid://d4fep46mb08cs" path="res://prefabs/player_detector.tscn" id="28_ckr7d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmpm6"]
 disable_ambient_light = true
@@ -365,6 +365,9 @@ transform_format = 1
 instance_count = 12
 mesh = ExtResource("12_2alg8")
 buffer = PackedFloat32Array(-0.969414, -0.0534575, -0.239539, 15.5, -0.0554949, 0.998458, 0.00176377, -0.1, 0.239076, 0.015003, -0.970885, 36.9, 0.0748406, -1.35718, -0.335355, 14.6328, -1.39784, -0.0776929, 0.00246928, 1.85742, -0.0210042, 0.334706, -1.35924, 36.8497, 0.0748406, -1.35718, -0.335355, 12.987, -1.39784, -0.0776929, 0.00246928, 0.746207, -0.0210042, 0.334706, -1.35924, 38.2837, -0.969414, -0.0534575, -0.239539, 10.7454, -0.0554949, 0.998458, 0.00176377, -0.396945, 0.239076, 0.015003, -0.970885, 39.7205, 0.5161, -0.0534575, 0.854859, 9.8333, 0.040488, 0.998458, 0.0379937, 1.2689, -0.855572, 0.015003, 0.517467, 38.9186, 0.521845, 0.837893, -0.160043, 10.5525, -0.813716, 0.545256, 0.201401, 1.52585, 0.256016, 0.0251286, 0.966346, 37.7116, 0.521845, 0.837893, -0.160043, 5.81646, -0.813716, 0.545256, 0.201401, 1.32858, 0.256016, 0.0251286, 0.966346, 40.6307, 0.521845, 0.837893, -0.160043, 14.0621, -0.813716, 0.545256, 0.201401, 1.83156, 0.256016, 0.0251286, 0.966346, 36.5373, 0.0748406, -1.35718, -0.335355, 9.87819, -1.39784, -0.0776929, 0.00246928, 1.56047, -0.0210042, 0.334706, -1.35924, 39.6702, 0.134713, -1.35718, -0.335355, 16.9271, -2.51611, -0.0776929, 0.00246928, 1.26646, -0.0378076, 0.334706, -1.35924, 34.5939, 0.094299, 0.271715, 0.940121, 17.8736, -1.76128, 0.0286894, 0.0462346, 1.26491, -0.0264652, -0.941143, 0.272829, 33.6089, 0.0748406, -1.35718, -0.335355, 8.23236, -1.39784, -0.0776929, 0.00246928, 0.449262, -0.0210042, 0.334706, -1.35924, 41.1043)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2y71"]
+size = Vector3(3, 1, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftt20"]
 transparency = 1
@@ -3000,6 +3003,7 @@ MeshToCopy = ExtResource("12_2alg8")
 
 [node name="SellArea" parent="IslandMountain" instance=ExtResource("20_ch3ei")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 53.1232, 1.10143, -81.6392)
+visible = false
 ending_screen = ExtResource("20_0wjef")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="IslandMountain"]
@@ -3017,6 +3021,13 @@ transform = Transform3D(0.5216, 0, -0.139762, 0, 0.54, 0, 0.139762, 0, 0.5216, 5
 [node name="Altar2" parent="IslandMountain" instance=ExtResource("21_jyw33")]
 transform = Transform3D(0.309731, 0, -0.442342, 0, 0.54, 0, 0.442342, 0, 0.309731, 54.0212, 9.3, -79.571)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="IslandMountain"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54.7, 11, -82.2124)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IslandMountain/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+shape = SubResource("BoxShape3D_l2y71")
+
 [node name="Props" type="Node3D" parent="."]
 transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -54.4, -0.2, 104.1)
 
@@ -3030,16 +3041,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.5, 21)
 stream = ExtResource("14_uyfor")
 volume_db = -25.0
 autoplay = true
-
-[node name="Cameras" type="Node" parent="."]
-
-[node name="Camera3D1" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.88901, -0.0203377, -0.457437, 0, 0.999013, -0.0444163, 0.457888, 0.0394865, 0.888132, -18.6411, 8.62721, 22.6319)
-visible = false
-
-[node name="Camera3D2" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.978143, -0.0246047, -0.206473, 0, 0.992974, -0.118329, 0.207934, 0.115743, 0.971271, -72.9184, 3.89465, 122.258)
-visible = false
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("17_qkvsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 4, 120)

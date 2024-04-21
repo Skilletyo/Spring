@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://5diet84f3io2"]
 
-[ext_resource type="PackedScene" uid="uid://bvs7py3edekgq" path="res://prefabs/_base_pickupable.tscn" id="1_7l3nm"]
+[ext_resource type="PackedScene" path="res://prefabs/_base_pickupable.tscn" id="1_7l3nm"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wu34d"]
 top_radius = 0.3

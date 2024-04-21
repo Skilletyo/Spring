@@ -20,3 +20,4 @@ func _on_body_entered(body):
 func teleport_player():
 	references.Player.global_position = marker.global_position
 	references.Player.global_rotation = marker.global_rotation
+	$AudioStreamPlayer.play()
