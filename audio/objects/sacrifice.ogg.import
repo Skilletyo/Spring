@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://bcklo6apwf0ok"
-path="res://.godot/imported/sacrifice.ogg-824261f11256a59f30871f02c55df3e7.oggvorbisstr"
+path="res://.godot/imported/sacrifice.ogg-17a78c7b6495c766e878bae30dc8f680.oggvorbisstr"
 
 [deps]
 
-source_file="res://audio/objects/sacrifice.ogg"
-dest_files=["res://.godot/imported/sacrifice.ogg-824261f11256a59f30871f02c55df3e7.oggvorbisstr"]
+source_file="res://Audio/objects/sacrifice.ogg"
+dest_files=["res://.godot/imported/sacrifice.ogg-17a78c7b6495c766e878bae30dc8f680.oggvorbisstr"]
 
 [params]
 
