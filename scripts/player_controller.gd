@@ -209,6 +209,7 @@ func catch_fish():
 		var player_feet_position = global_transform.origin  # Assuming the player's position is at its feet
 		fishInstance.global_transform.origin = player_feet_position + Vector3(0, 2, 0)
 		fishInstance.add_to_group("Physics")
+		fishInstance.set_linear_velocity(Vector3(0, 0, 0))
 		# Perform any additional actions, e.g., increasing player's score
 	# Delete the bob
 	delete_bob()
