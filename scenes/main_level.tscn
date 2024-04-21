@@ -1,6 +1,6 @@
 [gd_scene load_steps=84 format=3 uid="uid://i5kujxtp0aoe"]
 
-[ext_resource type="Material" uid="uid://cd002ua4sr5dl" path="res://Materials/water.material" id="3_81alb"]
+[ext_resource type="Material" uid="uid://cd002ua4sr5dl" path="res://materials/water.material" id="3_81alb"]
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
 [ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_xurpp"]
 [ext_resource type="Shader" path="res://materials/water_modified.gdshader" id="5_qko3u"]
@@ -16,15 +16,15 @@
 [ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://Prefabs/tree_one.tscn" id="9_gpx65"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterExclude.gd" id="9_o8ud7"]
 [ext_resource type="PackedScene" uid="uid://cgjvpx8rh12jl" path="res://Prefabs/stone_02_.tscn" id="11_4c8uc"]
-[ext_resource type="PackedScene" path="res://Prefabs/mesh_combiner.tscn" id="11_vsc7i"]
+[ext_resource type="PackedScene" uid="uid://dlvglc3bpgur3" path="res://Prefabs/mesh_combiner.tscn" id="11_vsc7i"]
 [ext_resource type="ArrayMesh" uid="uid://e0wiltkwetym" path="res://models/forest/meshes/Root Scene_stone2.res" id="12_2alg8"]
 [ext_resource type="ArrayMesh" uid="uid://vitvhdnbysqu" path="res://models/forest/meshes/Root Scene_stone4.res" id="12_t3rrh"]
-[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://Audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
+[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
 [ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://Prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
 [ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://Prefabs/gameobjects/player.tscn" id="17_qkvsv"]
 [ext_resource type="PackedScene" uid="uid://bycgyba2nqpb7" path="res://Prefabs/ending_screen.tscn" id="20_0wjef"]
 [ext_resource type="PackedScene" uid="uid://b1vflu5ua03yx" path="res://Prefabs/sell_area.tscn" id="20_ch3ei"]
-[ext_resource type="Texture2D" uid="uid://dxkcbv61h5l87" path="res://Materials/SpringJamFish.png" id="24_qdk8x"]
+[ext_resource type="Texture2D" uid="uid://dxkcbv61h5l87" path="res://materials/SpringJamFish.png" id="24_qdk8x"]
 [ext_resource type="PackedScene" uid="uid://kxqbojegq5it" path="res://Prefabs/city.tscn" id="25_p1dt5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmpm6"]
@@ -374,6 +374,33 @@ emission_energy_multiplier = 0.5
 [sub_resource type="QuadMesh" id="QuadMesh_l18ej"]
 size = Vector2(4, 4)
 
+[sub_resource type="Animation" id="Animation_1ti7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("City:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(105, 2, 294)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("City:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_fgd1s"]
 resource_name = "end_game"
 length = 20.0
@@ -400,33 +427,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_1ti7n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("City:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(105, 2, 294)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("City:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8fed0"]

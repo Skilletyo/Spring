@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://c4xichdxusovu"
-path="res://.godot/imported/water_splash.ogg-8bb0360a6479b367cd562eefcc788398.oggvorbisstr"
+path="res://.godot/imported/water_splash.ogg-0fa7f7997af60dd4c54e472bc4d7bcf6.oggvorbisstr"
 
 [deps]
 
-source_file="res://Audio/player/water_splash.ogg"
-dest_files=["res://.godot/imported/water_splash.ogg-8bb0360a6479b367cd562eefcc788398.oggvorbisstr"]
+source_file="res://audio/player/water_splash.ogg"
+dest_files=["res://.godot/imported/water_splash.ogg-0fa7f7997af60dd4c54e472bc4d7bcf6.oggvorbisstr"]
 
 [params]
 
