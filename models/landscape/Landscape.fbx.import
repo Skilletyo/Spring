@@ -30,6 +30,28 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
+"materials": {
+"DefaultMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/gradient_purple.material"
+},
+"IslandBeginning0": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/gradient_grayer.material"
+},
+"IslandBeginning1": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/gradient_lime.material"
+},
+"IslandMiddle0": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/gradient_lime.material"
+},
+"IslandMiddle1": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/gradient_yellow.material"
+}
+},
 "meshes": {
 "Root Scene_IslandBeginning": {
 "generate/lightmap_uv": 0,
@@ -60,6 +82,16 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://models/landscape/meshes/Root Scene_IslandMountain.res"
+},
+"Root Scene_StoneBridge": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://models/landscape/meshes/Root Scene_StoneBridge.res"
 }
 }
 }

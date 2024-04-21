@@ -1,25 +1,26 @@
-[gd_scene load_steps=40 format=3 uid="uid://i5kujxtp0aoe"]
+[gd_scene load_steps=46 format=3 uid="uid://i5kujxtp0aoe"]
 
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
 [ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_xurpp"]
 [ext_resource type="Shader" path="res://materials/water_modified.gdshader" id="5_qko3u"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatter.gd" id="6_2c5a2"]
-[ext_resource type="PackedScene" uid="uid://3w3i6cba8o35" path="res://prefabs/landscape.tscn" id="6_avqk7"]
-[ext_resource type="PackedScene" uid="uid://5diet84f3io2" path="res://prefabs/gameobjects/barrel.tscn" id="6_ssdmx"]
+[ext_resource type="PackedScene" uid="uid://3w3i6cba8o35" path="res://Prefabs/landscape.tscn" id="6_avqk7"]
+[ext_resource type="PackedScene" uid="uid://5diet84f3io2" path="res://Prefabs/gameobjects/barrel.tscn" id="6_ssdmx"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterItem.gd" id="7_cavyc"]
-[ext_resource type="PackedScene" uid="uid://d1fdpa6v24m2j" path="res://prefabs/pier_body.tscn" id="7_qmuo0"]
+[ext_resource type="PackedScene" uid="uid://d1fdpa6v24m2j" path="res://Prefabs/pier_body.tscn" id="7_qmuo0"]
 [ext_resource type="ArrayMesh" uid="uid://b3sk8m15ebrhc" path="res://models/forest/meshes/Root Scene_tree.res" id="7_y5l7b"]
-[ext_resource type="PackedScene" uid="uid://db53qa12vq5xi" path="res://prefabs/cabin.tscn" id="8_lsqc1"]
-[ext_resource type="PackedScene" uid="uid://biuu0p2fomtw0" path="res://prefabs/pier_pillar.tscn" id="8_p0pqc"]
+[ext_resource type="PackedScene" uid="uid://db53qa12vq5xi" path="res://Prefabs/cabin.tscn" id="8_lsqc1"]
+[ext_resource type="PackedScene" uid="uid://biuu0p2fomtw0" path="res://Prefabs/pier_pillar.tscn" id="8_p0pqc"]
 [ext_resource type="ArrayMesh" uid="uid://bsajxbllaqfyl" path="res://models/forest/meshes/Root Scene_tree3.res" id="8_p3wx4"]
-[ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://prefabs/tree_one.tscn" id="9_gpx65"]
+[ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://Prefabs/tree_one.tscn" id="9_gpx65"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterExclude.gd" id="9_o8ud7"]
-[ext_resource type="PackedScene" uid="uid://cgjvpx8rh12jl" path="res://prefabs/stone_02_.tscn" id="11_4c8uc"]
+[ext_resource type="PackedScene" uid="uid://cgjvpx8rh12jl" path="res://Prefabs/stone_02_.tscn" id="11_4c8uc"]
 [ext_resource type="ArrayMesh" uid="uid://vitvhdnbysqu" path="res://models/forest/meshes/Root Scene_stone4.res" id="12_t3rrh"]
-[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
-[ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
-[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://prefabs/gameobjects/player.tscn" id="17_qkvsv"]
-[ext_resource type="PackedScene" uid="uid://b1vflu5ua03yx" path="res://prefabs/sell_area.tscn" id="20_ch3ei"]
+[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://Audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
+[ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://Prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
+[ext_resource type="Shader" path="res://Materials/water_modified.gdshader" id="16_t16hu"]
+[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://Prefabs/gameobjects/player.tscn" id="17_qkvsv"]
+[ext_resource type="PackedScene" uid="uid://b1vflu5ua03yx" path="res://Prefabs/sell_area.tscn" id="20_ch3ei"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmpm6"]
 disable_ambient_light = true
@@ -142,6 +143,36 @@ _data = {
 }
 point_count = 10
 
+[sub_resource type="Gradient" id="Gradient_h8q3p"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xxypg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jh443"]
+seamless = true
+as_normal_map = true
+color_ramp = SubResource("Gradient_h8q3p")
+noise = SubResource("FastNoiseLite_xxypg")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nfejc"]
+seamless = true
+color_ramp = SubResource("Gradient_h8q3p")
+noise = SubResource("FastNoiseLite_xxypg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ab5ch"]
+render_priority = 0
+shader = ExtResource("16_t16hu")
+shader_parameter/water_color = Color(0.960784, 0.980392, 1, 1)
+shader_parameter/water_color2 = Color(0.184314, 0.2, 0.211765, 1)
+shader_parameter/roughness = 0.0
+shader_parameter/wave_scale = 32.0
+shader_parameter/height_scale = 0.01
+shader_parameter/wave_dir1 = Vector2(1, 0)
+shader_parameter/wave_dir2 = Vector2(0, 1)
+shader_parameter/wave_speed = 0.002
+shader_parameter/wave_texture = SubResource("NoiseTexture2D_nfejc")
+shader_parameter/normal1 = SubResource("NoiseTexture2D_jh443")
+shader_parameter/normal2 = SubResource("NoiseTexture2D_nfejc")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dlhl"]
 albedo_color = Color(0.729412, 0.866667, 1, 1)
 
@@ -154,7 +185,7 @@ size = Vector2(12, 12)
 [node name="Environment" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.866026, 0.321394, -0.383022, -1.63853e-08, 0.766044, 0.642788, 0.5, 0.556671, -0.663414, 9, 10, -33)
+transform = Transform3D(-0.866026, 0.387334, -0.316183, -1.49012e-08, 0.632367, 0.774669, 0.5, 0.670883, -0.547646, 9, 10, -33)
 light_color = Color(0.878431, 0.686275, 0.352941, 1)
 light_energy = 0.7
 shadow_enabled = true
@@ -1260,6 +1291,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 
 
 [node name="Pond" type="MeshInstance3D" parent="IslandMiddle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.3, -8)
+material_override = SubResource("ShaderMaterial_ab5ch")
 mesh = SubResource("PlaneMesh_p8sk3")
 
 [node name="Rocks" type="Node3D" parent="IslandMiddle"]
