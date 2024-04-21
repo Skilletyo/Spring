@@ -1,24 +1,25 @@
-[gd_scene load_steps=39 format=3 uid="uid://cfx2bv1gawk6g"]
+[gd_scene load_steps=40 format=3 uid="uid://i5kujxtp0aoe"]
 
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
 [ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_xurpp"]
 [ext_resource type="Shader" path="res://materials/water_modified.gdshader" id="5_qko3u"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatter.gd" id="6_2c5a2"]
-[ext_resource type="PackedScene" uid="uid://3w3i6cba8o35" path="res://prefabs/landscape.tscn" id="6_avqk7"]
-[ext_resource type="PackedScene" uid="uid://5diet84f3io2" path="res://prefabs/gameobjects/barrel.tscn" id="6_ssdmx"]
+[ext_resource type="PackedScene" uid="uid://3w3i6cba8o35" path="res://Prefabs/landscape.tscn" id="6_avqk7"]
+[ext_resource type="PackedScene" uid="uid://5diet84f3io2" path="res://Prefabs/gameobjects/barrel.tscn" id="6_ssdmx"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterItem.gd" id="7_cavyc"]
-[ext_resource type="PackedScene" uid="uid://d1fdpa6v24m2j" path="res://prefabs/pier_body.tscn" id="7_qmuo0"]
+[ext_resource type="PackedScene" uid="uid://d1fdpa6v24m2j" path="res://Prefabs/pier_body.tscn" id="7_qmuo0"]
 [ext_resource type="ArrayMesh" uid="uid://b3sk8m15ebrhc" path="res://models/forest/meshes/Root Scene_tree.res" id="7_y5l7b"]
-[ext_resource type="PackedScene" uid="uid://db53qa12vq5xi" path="res://prefabs/cabin.tscn" id="8_lsqc1"]
-[ext_resource type="PackedScene" uid="uid://biuu0p2fomtw0" path="res://prefabs/pier_pillar.tscn" id="8_p0pqc"]
+[ext_resource type="PackedScene" uid="uid://db53qa12vq5xi" path="res://Prefabs/cabin.tscn" id="8_lsqc1"]
+[ext_resource type="PackedScene" uid="uid://biuu0p2fomtw0" path="res://Prefabs/pier_pillar.tscn" id="8_p0pqc"]
 [ext_resource type="ArrayMesh" uid="uid://bsajxbllaqfyl" path="res://models/forest/meshes/Root Scene_tree3.res" id="8_p3wx4"]
-[ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://prefabs/tree_one.tscn" id="9_gpx65"]
+[ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://Prefabs/tree_one.tscn" id="9_gpx65"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterExclude.gd" id="9_o8ud7"]
 [ext_resource type="PackedScene" uid="uid://cgjvpx8rh12jl" path="res://prefabs/stone_02_.tscn" id="11_4c8uc"]
 [ext_resource type="ArrayMesh" uid="uid://vitvhdnbysqu" path="res://models/forest/meshes/Root Scene_stone4.res" id="12_t3rrh"]
-[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
-[ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
-[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://prefabs/gameobjects/player.tscn" id="17_qkvsv"]
+[ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://Audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
+[ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://Prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
+[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://Prefabs/gameobjects/player.tscn" id="17_qkvsv"]
+[ext_resource type="PackedScene" uid="uid://b1vflu5ua03yx" path="res://Prefabs/sell_area.tscn" id="20_ch3ei"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmpm6"]
 disable_ambient_light = true
@@ -1589,3 +1590,6 @@ visible = false
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("17_qkvsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 4, 120)
+
+[node name="SellArea" parent="." instance=ExtResource("20_ch3ei")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -3.87683, 4.10143, -9.63923)

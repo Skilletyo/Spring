@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://cscutee1k81ge"
-path="res://.godot/imported/Ruth White - Evening Harmony.ogg-db1b37c4d461cbc9089e3b01c05f41d1.oggvorbisstr"
+path="res://.godot/imported/Ruth White - Evening Harmony.ogg-c49df15407a7a35a89e5e08a9708448b.oggvorbisstr"
 
 [deps]
 
-source_file="res://audio/music/Ruth White - Evening Harmony.ogg"
-dest_files=["res://.godot/imported/Ruth White - Evening Harmony.ogg-db1b37c4d461cbc9089e3b01c05f41d1.oggvorbisstr"]
+source_file="res://Audio/Music/Ruth White - Evening Harmony.ogg"
+dest_files=["res://.godot/imported/Ruth White - Evening Harmony.ogg-c49df15407a7a35a89e5e08a9708448b.oggvorbisstr"]
 
 [params]
 
