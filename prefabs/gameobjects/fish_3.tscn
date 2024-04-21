@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://xgqpqpar452v"]
 
 [ext_resource type="Script" path="res://scripts/fish_small.gd" id="1_txm6p"]
-[ext_resource type="Material" uid="uid://y082bqy6dio1" path="res://materials/fishes/fisheye_black.tres" id="2_o2leu"]
-[ext_resource type="Material" uid="uid://bqulkx85cvdtn" path="res://materials/fishes/fishmouth_black.tres" id="3_04b3u"]
+[ext_resource type="Material" uid="uid://y082bqy6dio1" path="res://Materials/fishes/fisheye_black.tres" id="2_o2leu"]
+[ext_resource type="Material" uid="uid://bqulkx85cvdtn" path="res://Materials/fishes/fishmouth_black.tres" id="3_04b3u"]
 
 [sub_resource type="Gradient" id="Gradient_s6p3b"]
 colors = PackedColorArray(0.254685, 0.372582, 0.447128, 1, 0.170151, 0.425663, 0.446283, 1)

@@ -5,7 +5,6 @@
 [ext_resource type="ArrayMesh" uid="uid://bitw3id40n24w" path="res://models/city/meshes/Root Scene_roads.res" id="3_jxpus"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtdwj"]
-metallic = 1.0
 roughness = 0.0
 
 [node name="City" type="Node3D"]

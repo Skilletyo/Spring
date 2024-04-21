@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl5oxpfi7atqn"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddhgnq8bvqsot" path="res://models/forest/meshes/Root Scene_stone.res" id="1_yg4xm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71fyh"]
+size = Vector3(1.7, 0.89, 1.42)
+
+[node name="Altar" type="Node3D"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="RootSceneStone" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.296339, 0, 0.0206208)
+visibility_range_end = 20.0
+mesh = ExtResource("1_yg4xm")
+
+[node name="RootSceneStone3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.1, 0, -0.173205, 0, 0.2, 0, 0.173205, 0, -0.1, 0.636994, 0, 0.287287)
+visibility_range_end = 20.0
+mesh = ExtResource("1_yg4xm")
+
+[node name="RootSceneStone4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.183848, 0, 0.183848, 0, 0.26, 0, -0.183848, 0, -0.183848, 0.436994, 0, 0.953954)
+visibility_range_end = 20.0
+mesh = ExtResource("1_yg4xm")
+
+[node name="RootSceneStone5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.13, 0, 0.225166, 0, 0.26, 0, -0.225166, 0, 0.13, -0.229672, -0.133333, 0.687287)
+visibility_range_end = 20.0
+mesh = ExtResource("1_yg4xm")
+
+[node name="RootSceneStone2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.216506, -4.17137e-08, 0.125, -3.7749e-08, -0.25, -1.80444e-08, 0.125, -3.24757e-09, -0.216506, 0.14549, 0.833333, 0.279114)
+visibility_range_end = 20.0
+mesh = ExtResource("1_yg4xm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.1425, 0.361667, 0.471323)
+shape = SubResource("BoxShape3D_71fyh")

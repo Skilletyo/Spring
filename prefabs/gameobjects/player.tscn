@@ -5,11 +5,11 @@
 [ext_resource type="Script" path="res://prefabs/gameobjects/ScreenShake.gd" id="2_7bpxj"]
 [ext_resource type="PackedScene" uid="uid://bgr0uo4yfigc2" path="res://Prefabs/fishing_rod.tscn" id="2_v7ugw"]
 [ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://vfx/Vignette2048x1024.png" id="3_au6mq"]
-[ext_resource type="AudioStream" uid="uid://c7fvlnufp8c0m" path="res://audio/player/crunch.ogg" id="4_ne7k8"]
-[ext_resource type="AudioStream" uid="uid://bldehqkeobkxb" path="res://audio/player/rod_reel_in.ogg" id="6_bvdp7"]
-[ext_resource type="AudioStream" uid="uid://c4xichdxusovu" path="res://audio/player/water_splash.ogg" id="7_5vvwe"]
-[ext_resource type="AudioStream" uid="uid://247ff5pqvjol" path="res://audio/player/player_walk_1.ogg" id="8_gatfn"]
-[ext_resource type="AudioStream" uid="uid://dri1s8lmk3u3w" path="res://audio/player/player_walk_2.ogg" id="9_rok7b"]
+[ext_resource type="AudioStream" uid="uid://c7fvlnufp8c0m" path="res://Audio/player/crunch.ogg" id="4_ne7k8"]
+[ext_resource type="AudioStream" uid="uid://bldehqkeobkxb" path="res://Audio/player/rod_reel_in.ogg" id="6_bvdp7"]
+[ext_resource type="AudioStream" uid="uid://c4xichdxusovu" path="res://Audio/player/water_splash.ogg" id="7_5vvwe"]
+[ext_resource type="AudioStream" uid="uid://247ff5pqvjol" path="res://Audio/player/player_walk_1.ogg" id="8_gatfn"]
+[ext_resource type="AudioStream" uid="uid://dri1s8lmk3u3w" path="res://Audio/player/player_walk_2.ogg" id="9_rok7b"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_b4w05"]
 
@@ -18,9 +18,7 @@ radius = 0.3
 height = 1.6
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rd07a"]
-frequency = 0.131
-offset = Vector3(-169.49, 0, 0)
-fractal_octaves = 1
+frequency = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ukfv"]
 render_priority = 0
@@ -62,7 +60,7 @@ _data = {
 "Walking": SubResource("Animation_gr0ir")
 }
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_7fmxk")
 speed = 3.0
@@ -83,7 +81,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 current = true
 fov = 90.0
 script = ExtResource("2_7bpxj")
-trauma_reduction_rate = 0.5
 noise = SubResource("FastNoiseLite_rd07a")
 camera = NodePath(".")
 
