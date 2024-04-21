@@ -15,12 +15,12 @@
 [ext_resource type="ArrayMesh" uid="uid://bsajxbllaqfyl" path="res://models/forest/meshes/Root Scene_tree3.res" id="8_p3wx4"]
 [ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://prefabs/tree_one.tscn" id="9_gpx65"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterExclude.gd" id="9_o8ud7"]
-[ext_resource type="PackedScene" uid="uid://riq272fgqxhn" path="res://prefabs/stone_02_.tscn" id="11_4c8uc"]
+[ext_resource type="PackedScene" uid="uid://cgjvpx8rh12jl" path="res://prefabs/stone_02_.tscn" id="11_4c8uc"]
 [ext_resource type="ArrayMesh" uid="uid://vitvhdnbysqu" path="res://models/forest/meshes/Root Scene_stone4.res" id="12_t3rrh"]
 [ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
 [ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
 [ext_resource type="PackedScene" uid="uid://d2bwtv4h5hfb" path="res://prefabs/gameobjects/fish.tscn" id="17_70xce"]
-[ext_resource type="PackedScene" uid="uid://el0a8dh0phb1" path="res://prefabs/gameobjects/player_norod.tscn" id="18_u1bdv"]
+[ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://prefabs/gameobjects/player.tscn" id="17_qkvsv"]
 [ext_resource type="PackedScene" uid="uid://cmx2b8jcwtt75" path="res://prefabs/gameobjects/bottle.tscn" id="19_2nno5"]
 [ext_resource type="PackedScene" uid="uid://df58gghqed2tp" path="res://prefabs/gameobjects/portablestove.tscn" id="19_ikicr"]
 
@@ -1588,9 +1588,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 20)
 [node name="Barrel" parent="Props" instance=ExtResource("6_ssdmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.5, 21)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("18_u1bdv")]
-transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -71.9016, 3.78016, 121.012)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_uyfor")
 volume_db = -25.0
@@ -1604,3 +1601,6 @@ visible = false
 
 [node name="Camera3D2" type="Camera3D" parent="Cameras"]
 transform = Transform3D(0.978143, -0.0246047, -0.206473, 0, 0.992974, -0.118329, 0.207934, 0.115743, 0.971271, -72.9184, 3.89465, 122.258)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("17_qkvsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 4, 120)
