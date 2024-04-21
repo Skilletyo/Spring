@@ -14,9 +14,14 @@ var playerIsDead = false
 @onready var camera = $Node3D/Camera3D
 @onready var interactionTimeOut = $InteractionTimer
 @onready var eatingSound = $Audio/AudioStreamPlayer
+@onready var reelingInSound = $Audio/AudioStreamPlayer2
+@onready var catchingSound = $Audio/AudioStreamPlayer3
 
 var userInterface = load("res://prefabs/UI.tscn")
 var loadUserInterface = userInterface.instantiate()
+
+var waterSplashEmitter = load("res://prefabs/watersplash.tscn")
+var loadWaterSplash = waterSplashEmitter.instantiate()
 
 var seenObject = null
 var currentTarget = null
@@ -54,6 +59,7 @@ func _ready():
 
 func _physics_process(delta):
 	
+	fishing_sounds()
 	playerMovement(delta)
 	pickObject()
 	interactWithObject()
@@ -80,15 +86,12 @@ func playerMovement(delta):
 
 func interactWithObject():
 	if Input.is_action_pressed("Interact") and !playerIsDead:
-		print("Interact pressed")
 		if $Node3D/Camera3D/RayCast3D.is_colliding():
 			seenObject = $Node3D/Camera3D/RayCast3D.get_collider()
-			print("Got collider")
 			if seenObject.is_in_group("Interactable") and canInteract == true:
 					seenObject.interacted_with.emit()
 					canInteract = false
 					interactionTimeOut.start(1)
-					print("Sent interaction signal")
 
 func pickObject():
 	if Input.is_action_pressed("Pickup") and !playerIsDead:
@@ -96,7 +99,6 @@ func pickObject():
 			seenObject = $Node3D/Camera3D/RayCast3D.get_collider()
 			if seenObject.is_in_group("Physics"):
 				currentTarget = seenObject
-				print("Applying force...")
 	else:
 		currentTarget = null
 
@@ -176,6 +178,18 @@ func start_reeling():
 	if bobInstance and not fishInstance:
 		attach_fish()
 
+@onready var playingReel = false
+
+func fishing_sounds():
+	if isReeling && !playingReel:
+		reelingInSound.play()
+		playingReel = true
+	if !isReeling:
+		reelingInSound.stop()
+		playingReel = false
+
+
+
 func stop_reeling():
 	isReeling = false
 
@@ -217,6 +231,7 @@ func catch_fish():
 
 func delete_bob():
 	if bobInstance:
+		bobInstance.remove_child(loadWaterSplash)
 		bobInstance.queue_free()
 		bobInstance = null
 
@@ -225,6 +240,7 @@ func set_bob_instance(instance):
 
 func _on_reel_timer_timeout():
 	bobInstance.get_child(0).get_active_material(0).albedo_color = Color.GREEN
+	bobInstance.add_child(loadWaterSplash)
 	canReel = true
 
 func reset_fishing():
