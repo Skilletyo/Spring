@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2bwtv4h5hfb"]
+
+[ext_resource type="Script" path="res://scripts/fish_small.gd" id="1_uqgq3"]
+[ext_resource type="ArrayMesh" uid="uid://w04trawkkahm" path="res://models/fish/meshes/fish_01.res" id="2_arve2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u57lr"]
+points = PackedVector3Array(0.183029, 0.120605, 0.00614397, -0.397116, 0.0128681, 0.00670512, 0.263264, -0.0849116, 0.0434063, 0.263264, 0.0985071, -0.0422159, -0.0668491, -0.170551, -0.0177512, -0.360411, 0.110741, -0.0177512, -0.311446, 0.0618047, 0.0311698, -0.0668491, -0.170551, 0.0189417, 0.263264, 0.0985071, 0.0434063, 0.348934, -0.0238032, -0.0422159, -0.323706, 0.0373364, -0.0299793, -0.372595, 0.13521, 0.00670512, 0.373455, 0.0251023, 0.0311698, 0.275601, -0.0849116, -0.0422159, 0.214376, -0.158316, 0.0189417, 0.361118, -0.0604433, 0.0311698, 0.177671, -0.170551, -0.0177512, 0.336674, -0.0849116, -0.0299793, -0.274664, 0.000633977, 0.0311698, -0.384855, 0.0251023, -0.0177512, -0.372595, 0.13521, -0.00551465, 0.202115, 0.0985071, -0.0422159, 0.336674, -0.0238032, 0.0434063, -0.348151, 0.110741, 0.0189417, 0.366993, -0.000534949, -0.0168736, -0.299109, 0.0128681, -0.0299793, 0.214376, 0.0985071, 0.0434063, 0.184408, 0.121661, -0.00499405, -0.323706, 0.0618047, -0.0299793, 0.300046, -0.10938, 0.0311698, 0.361118, -0.0604433, -0.0299793, -0.372595, 0.0251023, 0.0189417)
+
+[node name="fish" type="RigidBody3D" groups=["Food", "Interactable", "Physics"]]
+collision_layer = 2
+script = ExtResource("1_uqgq3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
+mesh = ExtResource("2_arve2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_u57lr")
+
+[connection signal="interacted_with" from="." to="." method="_on_interacted_with"]

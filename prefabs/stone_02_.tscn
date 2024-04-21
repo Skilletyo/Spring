@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgjvpx8rh12jl"]
+
+[ext_resource type="ArrayMesh" uid="uid://e0wiltkwetym" path="res://models/forest/meshes/Root Scene_stone2.res" id="1_0bm34"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0014s"]
+radius = 1.2
+
+[node name="Stone02_" type="MeshInstance3D"]
+mesh = ExtResource("1_0bm34")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.1)
+shape = SubResource("SphereShape3D_0014s")
