@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://kxqbojegq5it"]
+
+[ext_resource type="ArrayMesh" uid="uid://0nlq0h02g1h6" path="res://models/city/meshes/Root Scene_blocks.res" id="1_lca2t"]
+[ext_resource type="ArrayMesh" uid="uid://lh2j8ifwpnid" path="res://models/city/meshes/Root Scene_buildings.res" id="2_hrcx3"]
+[ext_resource type="ArrayMesh" uid="uid://bitw3id40n24w" path="res://models/city/meshes/Root Scene_roads.res" id="3_jxpus"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtdwj"]
+metallic = 1.0
+roughness = 0.0
+
+[node name="City" type="Node3D"]
+
+[node name="RootSceneBlocks" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17407, 0, 0.0938539)
+material_override = SubResource("StandardMaterial3D_jtdwj")
+mesh = ExtResource("1_lca2t")
+
+[node name="RootSceneBuildings" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17407, 0, 0.0938539)
+material_override = SubResource("StandardMaterial3D_jtdwj")
+mesh = ExtResource("2_hrcx3")
+
+[node name="RootSceneRoads" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17407, 0, 0.0938539)
+material_override = SubResource("StandardMaterial3D_jtdwj")
+mesh = ExtResource("3_jxpus")

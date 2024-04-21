@@ -1,6 +1,6 @@
-[gd_scene load_steps=76 format=3 uid="uid://i5kujxtp0aoe"]
+[gd_scene load_steps=84 format=3 uid="uid://i5kujxtp0aoe"]
 
-[ext_resource type="Material" uid="uid://dhbr41wl2638c" path="res://Materials/water.material" id="3_81alb"]
+[ext_resource type="Material" uid="uid://cd002ua4sr5dl" path="res://Materials/water.material" id="3_81alb"]
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
 [ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_xurpp"]
 [ext_resource type="Shader" path="res://materials/water_modified.gdshader" id="5_qko3u"]
@@ -16,13 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://s4joy7e23x3q" path="res://Prefabs/tree_one.tscn" id="9_gpx65"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterExclude.gd" id="9_o8ud7"]
 [ext_resource type="PackedScene" uid="uid://cgjvpx8rh12jl" path="res://Prefabs/stone_02_.tscn" id="11_4c8uc"]
-[ext_resource type="PackedScene" uid="uid://dlvglc3bpgur3" path="res://Prefabs/mesh_combiner.tscn" id="11_vsc7i"]
+[ext_resource type="PackedScene" path="res://Prefabs/mesh_combiner.tscn" id="11_vsc7i"]
 [ext_resource type="ArrayMesh" uid="uid://e0wiltkwetym" path="res://models/forest/meshes/Root Scene_stone2.res" id="12_2alg8"]
 [ext_resource type="ArrayMesh" uid="uid://vitvhdnbysqu" path="res://models/forest/meshes/Root Scene_stone4.res" id="12_t3rrh"]
 [ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://Audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
 [ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://Prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
 [ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://Prefabs/gameobjects/player.tscn" id="17_qkvsv"]
+[ext_resource type="PackedScene" uid="uid://bycgyba2nqpb7" path="res://Prefabs/ending_screen.tscn" id="20_0wjef"]
 [ext_resource type="PackedScene" uid="uid://b1vflu5ua03yx" path="res://Prefabs/sell_area.tscn" id="20_ch3ei"]
+[ext_resource type="Texture2D" uid="uid://dxkcbv61h5l87" path="res://Materials/SpringJamFish.png" id="24_qdk8x"]
+[ext_resource type="PackedScene" uid="uid://kxqbojegq5it" path="res://Prefabs/city.tscn" id="25_p1dt5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmpm6"]
 disable_ambient_light = true
@@ -173,9 +176,10 @@ instance_count = 12
 mesh = ExtResource("12_2alg8")
 buffer = PackedFloat32Array(0.630934, 0, 0.901067, -63.2, 0, 1.1, 0, -0.4, -0.901067, 0, 0.630934, 75.5, -3.86106e-08, 0.883308, 1.26149, -62.5115, -1.54, -6.73155e-08, 0, 1.8, 5.51416e-08, -1.26149, 0.883308, 75.0153, -3.86106e-08, 0.883308, 1.26149, -62.1507, -1.54, -6.73155e-08, 0, 0.7, 5.51416e-08, -1.26149, 0.883308, 72.5822, 0.630934, 0, 0.901067, -61.2978, 0, 1.1, 0, -0.4, -0.901067, 0, 0.630934, 69.7149, 0.191013, 0, -1.08329, -60.0181, 0, 1.1, 0, 1.47, 1.08329, 0, 0.191013, 69.8051, -0.736118, 0.720134, 0.3867, -61.748, 0.808025, 0.562539, 0.490557, 2.18999, 0.123393, 0.612337, -0.905438, 71.3371, -0.58997, -0.729755, -0.573927, -57.9359, -0.920168, 0.55, 0.246558, 1.8, 0.123393, 0.612337, -0.905437, 65.4889, -0.58997, -0.729755, -0.573927, -61.8121, -0.920168, 0.55, 0.246558, 1.8, 0.123393, 0.612337, -0.905437, 74.8604, -3.86106e-08, 0.883308, 1.26149, -60.6092, -1.54, -6.73155e-08, 0, 1.8, 5.51416e-08, -1.26149, 0.883308, 69.2301, -6.94993e-08, 0.883308, 1.26149, -63.5844, -2.772, -6.73155e-08, 0, 0.92, 9.92552e-08, -1.26149, 0.883308, 79.2325, -3.58454e-08, 0.455582, -0.977, -62.5844, -1.9404, -4.71209e-08, 0, 2.02, -7.68709e-08, 0.977, 0.455582, 79.2325, -3.86106e-08, 0.883308, 1.26149, -60.2484, -1.54, -6.73155e-08, 0, 0.7, 5.51416e-08, -1.26149, 0.883308, 66.7971)
 
-[sub_resource type="MultiMesh" id="MultiMesh_0pcjv"]
+[sub_resource type="MultiMesh" id="MultiMesh_w68sm"]
 transform_format = 1
 instance_count = 13
+mesh = ExtResource("12_2alg8")
 buffer = PackedFloat32Array(-0.284701, 0, 1.06252, -56.6, 0, 1.1, 0, -0.4, -1.06252, 0, -0.284701, 91.6, 1.74225e-08, -0.398581, 1.48753, -56.5287, -1.54, -6.73155e-08, 0, 1.8, 6.50219e-08, -1.48753, -0.398581, 90.761, 1.74225e-08, -0.398581, 1.48753, -58.1606, -1.54, -6.73155e-08, 0, 0.7, 6.50219e-08, -1.48753, -0.398581, 88.9206, -0.284701, 0, 1.06252, -59.8089, 0, 1.1, 0, -0.4, -1.06252, 0, -0.284701, 86.4242, 0.952629, 0, -0.550001, -58.9172, 0, 1.1, 0, 1.47, 0.550001, 0, 0.952629, 85.502, -0.284702, -5.36442e-07, -1.06252, -57.57, -0.920168, 0.55, 0.246558, 1.69, 0.53126, 0.952629, -0.142351, 86.2798, -0.284702, -5.36442e-07, -1.06252, -60.8852, -0.920168, 0.55, 0.246558, 1.8, 0.53126, 0.952629, -0.142351, 81.1324, -0.284702, -5.36442e-07, -1.06252, -56.1979, -0.920168, 0.55, 0.246558, 1.8, 0.53126, 0.952629, -0.142351, 90.1257, 1.74225e-08, -0.398581, 1.48753, -59.7377, -1.54, -6.73155e-08, 0, 1.8, 6.50219e-08, -1.48753, -0.398581, 85.5851, 3.13607e-08, -0.398581, 1.48753, -53.9878, -2.772, -6.73155e-08, 0, 0.92, 1.1704e-07, -1.48753, -0.398581, 94.2937, -8.19276e-08, 1.04127, -0.279008, -53.9878, -1.9404, -4.71209e-08, 0, 1.02, -2.19525e-08, 0.279008, 1.04127, 94.2937, 2.08616e-07, 1.04127, -0.279007, -51.8878, -1.68044, 0.139503, 0.520634, 1.02, 0.970202, 0.241628, 0.901766, 94.6938, 1.74225e-08, -0.398581, 1.48753, -61.3696, -1.54, -6.73155e-08, 0, 0.7, 6.50219e-08, -1.48753, -0.398581, 83.7448)
 
 [sub_resource type="MultiMesh" id="MultiMesh_q4d1m"]
@@ -359,6 +363,77 @@ transform_format = 1
 instance_count = 12
 mesh = ExtResource("12_2alg8")
 buffer = PackedFloat32Array(-0.969414, -0.0534575, -0.239539, 15.5, -0.0554949, 0.998458, 0.00176377, -0.1, 0.239076, 0.015003, -0.970885, 36.9, 0.0748406, -1.35718, -0.335355, 14.6328, -1.39784, -0.0776929, 0.00246928, 1.85742, -0.0210042, 0.334706, -1.35924, 36.8497, 0.0748406, -1.35718, -0.335355, 12.987, -1.39784, -0.0776929, 0.00246928, 0.746207, -0.0210042, 0.334706, -1.35924, 38.2837, -0.969414, -0.0534575, -0.239539, 10.7454, -0.0554949, 0.998458, 0.00176377, -0.396945, 0.239076, 0.015003, -0.970885, 39.7205, 0.5161, -0.0534575, 0.854859, 9.8333, 0.040488, 0.998458, 0.0379937, 1.2689, -0.855572, 0.015003, 0.517467, 38.9186, 0.521845, 0.837893, -0.160043, 10.5525, -0.813716, 0.545256, 0.201401, 1.52585, 0.256016, 0.0251286, 0.966346, 37.7116, 0.521845, 0.837893, -0.160043, 5.81646, -0.813716, 0.545256, 0.201401, 1.32858, 0.256016, 0.0251286, 0.966346, 40.6307, 0.521845, 0.837893, -0.160043, 14.0621, -0.813716, 0.545256, 0.201401, 1.83156, 0.256016, 0.0251286, 0.966346, 36.5373, 0.0748406, -1.35718, -0.335355, 9.87819, -1.39784, -0.0776929, 0.00246928, 1.56047, -0.0210042, 0.334706, -1.35924, 39.6702, 0.134713, -1.35718, -0.335355, 16.9271, -2.51611, -0.0776929, 0.00246928, 1.26646, -0.0378076, 0.334706, -1.35924, 34.5939, 0.094299, 0.271715, 0.940121, 17.8736, -1.76128, 0.0286894, 0.0462346, 1.26491, -0.0264652, -0.941143, 0.272829, 33.6089, 0.0748406, -1.35718, -0.335355, 8.23236, -1.39784, -0.0776929, 0.00246928, 0.449262, -0.0210042, 0.334706, -1.35924, 41.1043)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftt20"]
+transparency = 1
+albedo_texture = ExtResource("24_qdk8x")
+emission_enabled = true
+emission = Color(0.709804, 0.745098, 1, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_l18ej"]
+size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_fgd1s"]
+resource_name = "end_game"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("City:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(105, -382, 294), Vector3(105, 2, 294)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("City:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_1ti7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("City:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(105, 2, 294)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("City:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8fed0"]
+_data = {
+"RESET": SubResource("Animation_1ti7n"),
+"end_game": SubResource("Animation_fgd1s")
+}
 
 [node name="Level" type="Node"]
 
@@ -925,7 +1000,7 @@ skeleton = NodePath("../..")
 
 [node name="MeshCombiner" parent="IslandBeginning/Rocks/Prefab4" instance=ExtResource("11_vsc7i")]
 transform = Transform3D(-0.235289, 0, -0.878113, 0, 0.909091, 0, 0.878113, 0, -0.235289, 67.1178, 0.363636, 71.2537)
-multimesh = SubResource("MultiMesh_0pcjv")
+multimesh = SubResource("MultiMesh_w68sm")
 MeshToCopy = ExtResource("12_2alg8")
 
 [node name="Prefab5" type="Node3D" parent="IslandBeginning/Rocks"]
@@ -2923,6 +2998,7 @@ MeshToCopy = ExtResource("12_2alg8")
 
 [node name="SellArea" parent="IslandMountain" instance=ExtResource("20_ch3ei")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -4.8768, 2.10143, -8.6392)
+ending_screen = ExtResource("20_0wjef")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="IslandMountain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.7, 10.2, -80)
@@ -2957,3 +3033,16 @@ visible = false
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("17_qkvsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 4, 120)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 53.9, 10, -82.1)
+material_override = SubResource("StandardMaterial3D_ftt20")
+mesh = SubResource("QuadMesh_l18ej")
+
+[node name="EndGameAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8fed0")
+}
+
+[node name="City" parent="." instance=ExtResource("25_p1dt5")]
+transform = Transform3D(6470.48, 0, 24148.1, 0, 25000, 0, -24148.1, 0, 6470.48, 105, 2, 294)
