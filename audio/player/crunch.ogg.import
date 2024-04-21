@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://c7fvlnufp8c0m"
-path="res://.godot/imported/crunch.ogg-4f773cd389fc655b6049a9c112e67ef6.oggvorbisstr"
+path="res://.godot/imported/crunch.ogg-7055403263c3b7ceeb9d992b2b02be88.oggvorbisstr"
 
 [deps]
 
-source_file="res://audio/player/crunch.ogg"
-dest_files=["res://.godot/imported/crunch.ogg-4f773cd389fc655b6049a9c112e67ef6.oggvorbisstr"]
+source_file="res://Audio/player/crunch.ogg"
+dest_files=["res://.godot/imported/crunch.ogg-7055403263c3b7ceeb9d992b2b02be88.oggvorbisstr"]
 
 [params]
 

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://0dxd1iuv8lna" path="res://prefabs/gameobjects/rigidball.tscn" id="3_eclt4"]
 [ext_resource type="PackedScene" uid="uid://el0a8dh0phb1" path="res://prefabs/gameobjects/player_norod.tscn" id="3_prr2x"]
 [ext_resource type="PackedScene" uid="uid://5diet84f3io2" path="res://prefabs/gameobjects/barrel.tscn" id="4_nn6gl"]
-[ext_resource type="PackedScene" uid="uid://d2bwtv4h5hfb" path="res://prefabs/gameobjects/fish.tscn" id="5_x0s3d"]
+[ext_resource type="PackedScene" uid="uid://d2bwtv4h5hfb" path="res://prefabs/gameobjects/fish/fish_1.tscn" id="5_x0s3d"]
 [ext_resource type="PackedScene" uid="uid://df58gghqed2tp" path="res://prefabs/gameobjects/portablestove.tscn" id="6_ej734"]
 [ext_resource type="PackedScene" uid="uid://diqnasyjocgr3" path="res://prefabs/gameobjects/stereo.tscn" id="7_u14fc"]
 
