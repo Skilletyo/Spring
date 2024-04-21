@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://bjyavdw8rkdri"]
 
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_labc6"]
-[ext_resource type="Script" path="res://prefabs/gameobjects/ScreenShake.gd" id="2_chovm"]
-[ext_resource type="PackedScene" path="res://prefabs/fishing_rod.tscn" id="3_v1bl0"]
+[ext_resource type="Script" path="res://prefabs/gameobjects/screen_shake.gd" id="2_6uksn"]
+[ext_resource type="PackedScene" uid="uid://bwobf40jj4h6u" path="res://prefabs/fishing_rod.tscn" id="3_v1bl0"]
 [ext_resource type="Shader" path="res://VFX/outline_sobol.gdshader" id="4_vonau"]
 [ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://vfx/Vignette2048x1024.png" id="5_52g01"]
 [ext_resource type="AudioStream" uid="uid://247ff5pqvjol" path="res://audio/player/player_walk_1.ogg" id="6_pj21a"]
@@ -102,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 [node name="Camera3D" type="Camera3D" parent="Node3D" node_paths=PackedStringArray("camera")]
 current = true
 fov = 90.0
-script = ExtResource("2_chovm")
+script = ExtResource("2_6uksn")
 noise = SubResource("FastNoiseLite_rd07a")
 camera = NodePath(".")
 
@@ -129,6 +129,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("5_52g01")
 expand_mode = 1
 

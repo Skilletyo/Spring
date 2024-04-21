@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://diqnasyjocgr3"]
+[gd_scene load_steps=6 format=3 uid="uid://5avd80jgpk2t"]
 
 [ext_resource type="Script" path="res://scripts/stereo.gd" id="1_u0nau"]
-[ext_resource type="AudioStream" uid="uid://cscutee1k81ge" path="res://audio/music/Ruth White - Evening Harmony.ogg" id="2_kefba"]
+[ext_resource type="AudioStream" uid="uid://cscutee1k81ge" path="res://audio/Music/Ruth White - Evening Harmony.ogg" id="2_kefba"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6dgd"]
 size = Vector3(1.00513, 0.499588, 0.582733)
@@ -19,6 +19,7 @@ stream = ExtResource("2_kefba")
 volume_db = -10.0
 unit_size = 2.0
 max_db = -15.0
+autoplay = true
 bus = &"Stereo"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

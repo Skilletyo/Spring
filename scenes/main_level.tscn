@@ -20,7 +20,7 @@
 [ext_resource type="ArrayMesh" uid="uid://e0wiltkwetym" path="res://models/forest/meshes/Root Scene_stone2.res" id="12_2alg8"]
 [ext_resource type="ArrayMesh" uid="uid://vitvhdnbysqu" path="res://models/forest/meshes/Root Scene_stone4.res" id="12_t3rrh"]
 [ext_resource type="AudioStream" uid="uid://t12vfkfbuu3b" path="res://audio/ambience/SeaAmbiance_Loop.ogg" id="14_uyfor"]
-[ext_resource type="PackedScene" path="res://prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
+[ext_resource type="PackedScene" uid="uid://5avd80jgpk2t" path="res://prefabs/gameobjects/stereo.tscn" id="16_rus3r"]
 [ext_resource type="PackedScene" uid="uid://bjyavdw8rkdri" path="res://prefabs/gameobjects/player.tscn" id="17_qkvsv"]
 [ext_resource type="PackedScene" uid="uid://bwik4e43ahbx3" path="res://prefabs/ending_screen.tscn" id="20_0wjef"]
 [ext_resource type="PackedScene" uid="uid://cekhrl8014q43" path="res://prefabs/sell_area.tscn" id="20_ch3ei"]
@@ -3032,10 +3032,10 @@ shape = SubResource("BoxShape3D_l2y71")
 transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -54.4, -0.2, 104.1)
 
 [node name="Stereo" parent="Props" instance=ExtResource("16_rus3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52305, 2.95698, 24.6842)
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -5.80967, 2.85698, 25.4953)
 
 [node name="Barrel" parent="Props" instance=ExtResource("6_ssdmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.5, 21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.5, 21)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_uyfor")

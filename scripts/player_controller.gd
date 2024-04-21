@@ -53,7 +53,7 @@ func _ready():
 	
 	# Initialize references
 	# Load the bob scene
-	bobPrefab = preload("res://Prefabs/bob.tscn")
+	bobPrefab = preload("res://prefabs/bob.tscn")
 	fishPrefab = preload("res://prefabs/gameobjects/fish/fish_1.tscn")
 	# Assuming the rod is a child of the player, get its reference
 	rod = $Node3D/Camera3D/Hand3D/FishingRod
