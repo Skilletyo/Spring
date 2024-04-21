@@ -39,7 +39,7 @@ func clampValues():
 func drawLabels():
 	hungerLabel.text = ("Food: " + str(hungerValue) + "%")
 	healthLabel.text = ("Health: " + str(healthValue) + "%")
-	moneyLabel.text = ("Money: " + str(moneyValue) + "$")
+	moneyLabel.text = ("Sacrifices: " + str(moneyValue))
 
 @onready var deathMessageShown = false
 
