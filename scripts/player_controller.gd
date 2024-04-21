@@ -16,6 +16,7 @@ var playerIsDead = false
 @onready var eatingSound = $Audio/AudioStreamPlayer
 @onready var reelingInSound = $Audio/AudioStreamPlayer2
 @onready var catchingSound = $Audio/AudioStreamPlayer3
+@onready var walkingSound = $AnimationPlayer
 
 var userInterface = load("res://prefabs/UI.tscn")
 var loadUserInterface = userInterface.instantiate()
@@ -83,6 +84,17 @@ func playerMovement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+
+	if Input.is_action_pressed("Sprint"):
+		walkingSound.speed_scale = 2
+	else:
+		walkingSound.speed_scale = 1
+
+	if velocity.x || velocity.z > 100 and is_on_floor():
+		walkingSound.play("Walking")
+	if !is_on_floor() or velocity.z == 0:
+		walkingSound.stop()
+
 
 func interactWithObject():
 	if Input.is_action_pressed("Interact") and !playerIsDead:
