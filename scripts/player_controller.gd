@@ -27,10 +27,30 @@ var mouseMath = (mouseSensitivity) / 1000
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Fishing variables
+var bobPrefab # Reference to the bob scene
+var castForce = 25 # Adjust this to control the force of the cast
+var rod # Reference to the rod node
+
+var bobInstance = null # Reference to the bob instance
+var fishInstance # Reference to the attached fish instance
+var fishPrefab
+var reelSpeed = 10.0 # Adjust this value to control the speed of reeling
+var deleteThreshold = 1.0 # Adjust this value to set the threshold distance for deleting the bob
+var isReeling = false # Flag to track if the player is reeling in
+var canReel = false
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	references.Player = self
 	add_child(loadUserInterface)
+	
+	# Initialize references
+	# Load the bob scene
+	bobPrefab = preload("res://Prefabs/bob.tscn")
+	fishPrefab = preload("res://Prefabs/gameobjects/fish.tscn")
+	# Assuming the rod is a child of the player, get its reference
+	rod = $Node3D/Camera3D/Hand3D/FishingRod
 
 func _physics_process(delta):
 	
@@ -105,3 +125,104 @@ func _input(event):
 
 func _on_interaction_timer_timeout():
 	canInteract = true
+
+# Fishing Logic
+func _process(delta):
+	if Input.is_action_just_pressed("Cast") && bobInstance == null:
+		cast()
+	if Input.is_action_pressed("ReelIn") && canReel:
+		start_reeling()
+	if isReeling and bobInstance:
+		reel_in(delta)
+
+func cast():
+	$ReelTimer.wait_time = randf_range(2.0, 4.0)
+	$ReelTimer.start()
+	# Instantiate the bob scene
+	var bob = bobPrefab.instantiate()
+	get_parent().add_child(bob) # Add the bob to the player's parent node
+	
+	# Set the bob's initial position relative to the player's forward direction
+	var spawnDistance = 2.0 # Adjust this value to set the distance from the player
+	var spawnOffset = global_transform.basis.x.normalized() * 0.5 # Adjust the offset to move the bob to the right
+	var spawnPosition = global_transform.origin + global_transform.basis.z.normalized() * spawnDistance + spawnOffset
+	bob.global_transform.origin = spawnPosition
+	
+	# Store reference to the bob instance
+	set_bob_instance(bob)
+	
+	#Reset color of the bob
+	bobInstance.get_child(0).get_active_material(0).albedo_color = Color.RED
+	
+	# Get the direction the rod is facing
+	var direction = -global_transform.basis.z.normalized()
+	
+	# Calculate the straight-line force
+	var straightForce = direction * castForce
+	
+	# Calculate the upward force based on the angle of the rod
+	var rodUpwardAngle = clamp(global_transform.basis.y.angle_to(Vector3.UP), 0, PI/2) # Angle between player's upward direction and global upward direction
+	var upwardForce = Vector3(0, sin(rodUpwardAngle), cos(rodUpwardAngle)) * castForce * 0.75 # Apply half of the force upward
+	
+	# Combine the straight and upward forces
+	var totalForce = straightForce + upwardForce
+	
+	# Apply the combined force to the bob
+	bob.apply_central_impulse(totalForce)
+
+
+func start_reeling():
+	isReeling = true
+	if bobInstance and not fishInstance:
+		attach_fish()
+
+func stop_reeling():
+	isReeling = false
+
+func attach_fish():
+	# Spawn fish and attach it to the bob
+	var fish = fishPrefab.instantiate()
+	bobInstance.add_child(fish)
+	fishInstance = fish
+
+func reel_in(delta):
+	if bobInstance:
+		var direction_to_bob = bobInstance.global_transform.origin - global_transform.origin
+		bobInstance.translate(-direction_to_bob.normalized() * reelSpeed * delta)
+		
+		# Check if the bob has reached the player's position
+		if direction_to_bob.length() < deleteThreshold:
+			stop_reeling()
+			catch_fish()
+			delete_bob()
+			canReel = false
+			
+
+func catch_fish():
+	if fishInstance:
+		if fishInstance.get_parent() != null:
+			fishInstance.get_parent().remove_child(fishInstance)
+		# Reparent the fish to the player's parent node (or another appropriate node)
+		get_parent().add_child(fishInstance)  # Adjust the parent node as needed
+		# Set the position of the fish relative to the player's feet
+		var player_feet_position = global_transform.origin  # Assuming the player's position is at its feet
+		fishInstance.global_transform.origin = player_feet_position + Vector3(0, 2, 0)
+		fishInstance.add_to_group("Physics")
+		# Perform any additional actions, e.g., increasing player's score
+	# Delete the bob
+	delete_bob()
+	fishInstance = null
+
+func delete_bob():
+	if bobInstance:
+		bobInstance.queue_free()
+		bobInstance = null
+
+func set_bob_instance(instance):
+	bobInstance = instance
+
+func _on_reel_timer_timeout():
+	print("GREEN")
+	bobInstance.get_child(0).get_active_material(0).albedo_color = Color.GREEN
+	canReel = true
+
