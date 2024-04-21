@@ -162,7 +162,7 @@ func cast():
 	
 	# Calculate the upward force based on the angle of the rod
 	var rodUpwardAngle = clamp(global_transform.basis.y.angle_to(Vector3.UP), 0, PI/2) # Angle between player's upward direction and global upward direction
-	var upwardForce = Vector3(0, sin(rodUpwardAngle), cos(rodUpwardAngle)) * castForce * 0.75 # Apply half of the force upward
+	var upwardForce = Vector3(0, sin(rodUpwardAngle), cos(rodUpwardAngle)) * castForce * 0.5 # Apply half of the force upward
 	
 	# Combine the straight and upward forces
 	var totalForce = straightForce + upwardForce
@@ -189,14 +189,15 @@ func reel_in(delta):
 	if bobInstance:
 		var direction_to_bob = bobInstance.global_transform.origin - global_transform.origin
 		bobInstance.translate(-direction_to_bob.normalized() * reelSpeed * delta)
-		
+		var direction_to_bob_after_moving = bobInstance.global_transform.origin - global_transform.origin
+		if direction_to_bob_after_moving.length() > direction_to_bob.length():
+			reset_fishing()
 		# Check if the bob has reached the player's position
 		if direction_to_bob.length() < deleteThreshold:
 			stop_reeling()
 			catch_fish()
 			delete_bob()
 			canReel = false
-			
 
 func catch_fish():
 	if fishInstance:
@@ -222,7 +223,12 @@ func set_bob_instance(instance):
 	bobInstance = instance
 
 func _on_reel_timer_timeout():
-	print("GREEN")
 	bobInstance.get_child(0).get_active_material(0).albedo_color = Color.GREEN
 	canReel = true
+
+func reset_fishing():
+	stop_reeling()
+	delete_bob()
+	canReel = false
+	fishInstance = null
 
