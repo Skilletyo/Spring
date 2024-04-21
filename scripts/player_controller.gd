@@ -18,7 +18,7 @@ var playerIsDead = false
 @onready var catchingSound = $Audio/AudioStreamPlayer3
 @onready var walkingSound = $AnimationPlayer
 
-var userInterface = load("res://prefabs/UI.tscn")
+var userInterface = load("res://prefabs/ui.tscn")
 var loadUserInterface = userInterface.instantiate()
 
 var waterSplashEmitter = load("res://prefabs/watersplash.tscn")
@@ -143,8 +143,8 @@ func _input(event):
 		rotate_y(-event.relative.x * mouseMath)
 		$Node3D.rotate_x(-event.relative.y * mouseMath)
 		$Node3D.rotation.x = clamp($Node3D.rotation.x, -1.5, 1.5)
-	if Input.is_action_pressed("Crouch"):
-			references.CameraPlayer.add_trauma(50)
+	#if Input.is_action_pressed("Crouch"):
+			#references.CameraPlayer.add_trauma(50)
 
 func _on_interaction_timer_timeout():
 	canInteract = true

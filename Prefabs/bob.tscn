@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://do045c61jjnib"]
+[gd_scene load_steps=5 format=3 uid="uid://dye6eiijd7kbv"]
 
-[ext_resource type="Script" path="res://Scripts/bob.gd" id="1_m84gd"]
+[ext_resource type="Script" path="res://scripts/bob.gd" id="1_82w3k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bspp7"]
 albedo_color = Color(1, 0, 0, 1)
@@ -14,7 +14,7 @@ height = 0.5
 radius = 0.25
 
 [node name="Bob" type="RigidBody3D"]
-script = ExtResource("1_m84gd")
+script = ExtResource("1_82w3k")
 float_force = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

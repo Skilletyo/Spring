@@ -6,7 +6,7 @@ extends RigidBody3D
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var water = get_node("../WaterBig")
+@onready var water = get_node("../../Water/Water1")
 
 var submerged := false
 func _physics_process(delta):

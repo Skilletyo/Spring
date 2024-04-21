@@ -20,6 +20,7 @@ volume_db = -10.0
 unit_size = 2.0
 max_db = -15.0
 autoplay = true
+stream_paused = true
 bus = &"Stereo"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

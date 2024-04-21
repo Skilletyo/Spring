@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://i5kujxtp0aoe"]
+[gd_scene load_steps=88 format=3 uid="uid://i5kujxtp0aoe"]
 
 [ext_resource type="Material" uid="uid://cd002ua4sr5dl" path="res://materials/water.material" id="3_81alb"]
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/cabin.tscn" id="8_lsqc1"]
 [ext_resource type="PackedScene" path="res://prefabs/pier_pillar.tscn" id="8_p0pqc"]
 [ext_resource type="ArrayMesh" uid="uid://bsajxbllaqfyl" path="res://models/forest/meshes/Root Scene_tree3.res" id="8_p3wx4"]
+[ext_resource type="ArrayMesh" uid="uid://c21i6ry0uay8p" path="res://models/pier/meshes/Root Scene_Pillar.res" id="8_t6vmn"]
 [ext_resource type="PackedScene" path="res://prefabs/tree_one.tscn" id="9_gpx65"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatterExclude.gd" id="9_o8ud7"]
 [ext_resource type="PackedScene" path="res://prefabs/stone_02_.tscn" id="11_4c8uc"]
@@ -146,6 +147,7 @@ subdivide_depth = 100
 [sub_resource type="MultiMesh" id="MultiMesh_lfxqq"]
 transform_format = 1
 instance_count = 16
+mesh = ExtResource("8_t6vmn")
 buffer = PackedFloat32Array(0.819152, 0, -0.573576, -71.7704, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 123.677, 0.819152, 0, -0.573576, -75.047, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 121.383, 0.819152, 0, -0.573576, -62.5932, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 110.571, 0.819152, 0, -0.573576, -65.8698, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 108.276, 0.819152, 0, -0.573576, -68.3273, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 106.556, 0.819152, 0, -0.573576, -66.033, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 103.279, 0.819152, 0, -0.573576, -58.6606, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 108.441, 0.819152, 0, -0.573576, -60.9549, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 111.718, 0.819152, 0, -0.573576, -55.384, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 110.736, 0.819152, 0, -0.573576, -52.9265, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 112.456, 0.819152, 0, -0.573576, -57.6783, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 114.012, 0.819152, 0, -0.573576, -55.2208, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 115.733, 0.819152, 0, -0.573576, -54.6456, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 102.707, 0.819152, 0, -0.573576, -51.369, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 105.002, 0.819152, 0, -0.573576, -49.4834, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 95.3349, 0.819152, 0, -0.573576, -46.2068, 0, 1, 0, -1.4, 0.573576, 0, 0.819152, 97.6292)
 
 [sub_resource type="Curve3D" id="Curve3D_xs1yi"]
@@ -3064,5 +3066,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
 
 [node name="Marker3D" parent="PlayerDetector" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 10, 120)
+
+[node name="Cameras" type="Node" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.70091, -0.0565271, -0.711006, 0, 0.996855, -0.0792529, 0.713249, 0.0555492, 0.698706, -68.5513, 4.71056, 112.581)
 
 [editable path="PlayerDetector"]
