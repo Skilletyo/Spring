@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cfx2bv1gawk6g"]
+[gd_scene load_steps=35 format=3 uid="uid://cfx2bv1gawk6g"]
 
 [ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
 [ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_xurpp"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://el0a8dh0phb1" path="res://prefabs/gameobjects/player_norod.tscn" id="18_u1bdv"]
 [ext_resource type="PackedScene" uid="uid://cmx2b8jcwtt75" path="res://prefabs/gameobjects/bottle.tscn" id="19_2nno5"]
 [ext_resource type="PackedScene" uid="uid://df58gghqed2tp" path="res://prefabs/gameobjects/portablestove.tscn" id="19_ikicr"]
+[ext_resource type="PackedScene" uid="uid://3wf8xchtfjul" path="res://prefabs/gameobjects/fish_2.tscn" id="20_t537s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmpm6"]
 disable_ambient_light = true
@@ -1066,4 +1067,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4795, 8.78016, -7.75419)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7271, 2, -10.491)
 
 [node name="fish" parent="." instance=ExtResource("17_70xce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5404, 2.74138, -22.2081)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5157, 2.85635, -21.6341)
+
+[node name="fish2" parent="." instance=ExtResource("20_t537s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9486, 2.76131, -22.5747)
