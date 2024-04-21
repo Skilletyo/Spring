@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://3wf8xchtfjul"]
 
 [ext_resource type="Script" path="res://scripts/fish_small.gd" id="1_j0aoo"]
-[ext_resource type="Material" uid="uid://y082bqy6dio1" path="res://materials/fishes/fisheye_black.tres" id="2_oya5u"]
-[ext_resource type="Material" uid="uid://bqulkx85cvdtn" path="res://materials/fishes/fishmouth_black.tres" id="3_guk2t"]
-[ext_resource type="Material" uid="uid://bt3faqno2n1ji" path="res://materials/fishes/bluecarl_texture.tres" id="4_iup6k"]
+[ext_resource type="Material" uid="uid://y082bqy6dio1" path="res://Materials/fishes/fisheye_black.tres" id="2_oya5u"]
+[ext_resource type="Material" uid="uid://bqulkx85cvdtn" path="res://Materials/fishes/fishmouth_black.tres" id="3_guk2t"]
+[ext_resource type="Material" uid="uid://bt3faqno2n1ji" path="res://Materials/fishes/bluecarl_texture.tres" id="4_iup6k"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ws2l7"]
 _surfaces = [{
