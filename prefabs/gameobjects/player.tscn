@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjyavdw8rkdri"]
+[gd_scene load_steps=16 format=3 uid="uid://bjyavdw8rkdri"]
 
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_7fmxk"]
 [ext_resource type="Shader" path="res://VFX/outline_sobol.gdshader" id="2_5k3vi"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://c7fvlnufp8c0m" path="res://audio/player/crunch.ogg" id="4_ne7k8"]
 [ext_resource type="AudioStream" uid="uid://bldehqkeobkxb" path="res://audio/player/rod_reel_in.ogg" id="6_bvdp7"]
 [ext_resource type="AudioStream" uid="uid://c4xichdxusovu" path="res://audio/player/water_splash.ogg" id="7_5vvwe"]
+[ext_resource type="AudioStream" uid="uid://247ff5pqvjol" path="res://audio/player/player_walk_1.ogg" id="8_gatfn"]
+[ext_resource type="AudioStream" uid="uid://dri1s8lmk3u3w" path="res://audio/player/player_walk_2.ogg" id="9_rok7b"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_b4w05"]
 
@@ -25,6 +27,34 @@ shader_parameter/transparency = 0.85
 [sub_resource type="QuadMesh" id="QuadMesh_bxjkr"]
 material = SubResource("ShaderMaterial_2ukfv")
 size = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_gr0ir"]
+resource_name = "Walking"
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/AudioStreamPlayer4")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_gatfn")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_rok7b")
+}],
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ioyde"]
+_data = {
+"Walking": SubResource("Animation_gr0ir")
+}
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -77,19 +107,29 @@ expand_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_ne7k8")
-volume_db = -5.0
+volume_db = -15.0
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_bvdp7")
+volume_db = -15.0
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_5vvwe")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -10.0
+pitch_scale = 0.8
 
 [node name="InteractionTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="ReelTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ioyde")
+}
 
 [connection signal="timeout" from="InteractionTimer" to="." method="_on_interaction_timer_timeout"]
 [connection signal="timeout" from="ReelTimer" to="." method="_on_reel_timer_timeout"]
