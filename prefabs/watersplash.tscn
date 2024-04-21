@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dodxl8mk81p1l"]
+
+[ext_resource type="AudioStream" uid="uid://c4xichdxusovu" path="res://audio/player/water_splash.ogg" id="1_s1j7q"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_s1j7q")
+unit_size = 2.0
+autoplay = true
