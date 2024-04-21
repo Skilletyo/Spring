@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://cd0kci2t6dtmb"
-path="res://.godot/imported/frying.ogg-f6cf706c1ab9237eda3c6cb66dc86cff.oggvorbisstr"
+path="res://.godot/imported/frying.ogg-a41b7c6c6752d1c4ac2943d85d65bdfa.oggvorbisstr"
 
 [deps]
 
-source_file="res://audio/objects/frying.ogg"
-dest_files=["res://.godot/imported/frying.ogg-f6cf706c1ab9237eda3c6cb66dc86cff.oggvorbisstr"]
+source_file="res://Audio/objects/frying.ogg"
+dest_files=["res://.godot/imported/frying.ogg-a41b7c6c6752d1c4ac2943d85d65bdfa.oggvorbisstr"]
 
 [params]
 
