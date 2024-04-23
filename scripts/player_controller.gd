@@ -18,7 +18,7 @@ var playerIsDead = false
 @onready var catchingSound = $Audio/AudioStreamPlayer3
 @onready var walkingSound = $AnimationPlayer
 
-var userInterface = load("res://prefabs/ui.tscn")
+var userInterface = load("res://prefabs/UI.tscn")
 var loadUserInterface = userInterface.instantiate()
 
 var waterSplashEmitter = load("res://prefabs/watersplash.tscn")
@@ -53,7 +53,7 @@ func _ready():
 	
 	# Initialize references
 	# Load the bob scene
-	bobPrefab = preload("res://prefabs/bob.tscn")
+	bobPrefab = preload("res://Prefabs/bob.tscn")
 	fishPrefab = preload("res://prefabs/gameobjects/fish/fish_1.tscn")
 	# Assuming the rod is a child of the player, get its reference
 	rod = $Node3D/Camera3D/Hand3D/FishingRod
@@ -131,20 +131,13 @@ func pickObject():
 		lastTarget.linear_damp = 0
 		lastTarget.linear_damp = 0
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 func _input(event):
-	if event is InputEventMouseButton:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 	if event is InputEventMouseMotion && !playerIsDead:
 		rotate_y(-event.relative.x * mouseMath)
 		$Node3D.rotate_x(-event.relative.y * mouseMath)
 		$Node3D.rotation.x = clamp($Node3D.rotation.x, -1.5, 1.5)
-	#if Input.is_action_pressed("Crouch"):
-			#references.CameraPlayer.add_trauma(50)
+	if Input.is_action_pressed("Crouch"):
+			references.CameraPlayer.add_trauma(50)
 
 func _on_interaction_timer_timeout():
 	canInteract = true
@@ -167,7 +160,7 @@ func cast():
 	
 	# Set the bob's initial position relative to the player's forward direction
 	var spawnDistance = 2.0 # Adjust this value to set the distance from the player
-	var spawnOffset = global_transform.basis.x.normalized() * 0.5 # Adjust the offset to move the bob to the right
+	var spawnOffset = global_transform.basis.x.normalized() # Adjust the offset to move the bob to the right
 	var spawnPosition = global_transform.origin + global_transform.basis.z.normalized() * spawnDistance + spawnOffset
 	bob.global_transform.origin = spawnPosition
 	
@@ -183,15 +176,8 @@ func cast():
 	# Calculate the straight-line force
 	var straightForce = direction * castForce
 	
-	# Calculate the upward force based on the angle of the rod
-	var rodUpwardAngle = clamp(global_transform.basis.y.angle_to(Vector3.UP), 0, PI/2) # Angle between player's upward direction and global upward direction
-	var upwardForce = Vector3(0, sin(rodUpwardAngle), cos(rodUpwardAngle)) * castForce * 0.5 # Apply half of the force upward
-	
-	# Combine the straight and upward forces
-	var totalForce = straightForce + upwardForce
-	
 	# Apply the combined force to the bob
-	bob.apply_central_impulse(totalForce)
+	bob.apply_central_impulse(straightForce)
 
 
 func start_reeling():
@@ -209,8 +195,6 @@ func fishing_sounds():
 		reelingInSound.stop()
 		playingReel = false
 
-
-
 func stop_reeling():
 	isReeling = false
 
@@ -222,13 +206,14 @@ func attach_fish():
 
 func reel_in(delta):
 	if bobInstance:
-		var direction_to_bob = bobInstance.global_transform.origin - global_transform.origin
-		bobInstance.translate(-direction_to_bob.normalized() * reelSpeed * delta)
-		var direction_to_bob_after_moving = bobInstance.global_transform.origin - global_transform.origin
-		if direction_to_bob_after_moving.length() > direction_to_bob.length():
+		var direction_to_player = global_transform.origin - bobInstance.global_transform.origin
+		print(direction_to_player)
+		bobInstance.translate(direction_to_player.normalized() * reelSpeed * delta)
+		var direction_to_player_after_moving = global_transform.origin - bobInstance.global_transform.origin
+		if direction_to_player_after_moving.length() > direction_to_player.length():
 			reset_fishing()
 		# Check if the bob has reached the player's position
-		if direction_to_bob.length() < deleteThreshold:
+		if direction_to_player.length() < deleteThreshold:
 			stop_reeling()
 			catch_fish()
 			delete_bob()
