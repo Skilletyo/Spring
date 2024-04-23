@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_labc6"]
 [ext_resource type="Script" path="res://prefabs/gameobjects/screen_shake.gd" id="2_6uksn"]
 [ext_resource type="PackedScene" uid="uid://bwobf40jj4h6u" path="res://prefabs/fishing_rod.tscn" id="3_v1bl0"]
-[ext_resource type="Shader" path="res://VFX/outline_sobol.gdshader" id="4_vonau"]
-[ext_resource type="Texture2D" uid="uid://brfjrd5rekrux" path="res://vfx/Vignette2048x1024.png" id="5_52g01"]
+[ext_resource type="Shader" path="res://vfx/outline_sobol.gdshader" id="4_eefbe"]
+[ext_resource type="Texture2D" uid="uid://b8g5kbgx4acig" path="res://vfx/Vignette2048x1024.png" id="5_52g01"]
 [ext_resource type="AudioStream" uid="uid://247ff5pqvjol" path="res://audio/player/player_walk_1.ogg" id="6_pj21a"]
 [ext_resource type="AudioStream" uid="uid://dri1s8lmk3u3w" path="res://audio/player/player_walk_2.ogg" id="7_adiy5"]
 
@@ -17,16 +17,16 @@ height = 1.6
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rd07a"]
 frequency = 0.25
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ukfv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnsqd"]
 render_priority = 0
-shader = ExtResource("4_vonau")
+shader = ExtResource("4_eefbe")
 shader_parameter/min_step = 0.0
 shader_parameter/max_step = 0.6
 shader_parameter/sobol_brightness = 0.25
 shader_parameter/transparency = 0.85
 
 [sub_resource type="QuadMesh" id="QuadMesh_bxjkr"]
-material = SubResource("ShaderMaterial_2ukfv")
+material = SubResource("ShaderMaterial_hnsqd")
 size = Vector2(2, 2)
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_aqbar"]
@@ -97,7 +97,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("CapsuleShape3D_ulylq")
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Node3D" node_paths=PackedStringArray("camera")]
 current = true

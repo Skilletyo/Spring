@@ -18,7 +18,7 @@ var playerIsDead = false
 @onready var catchingSound = $Audio/AudioStreamPlayer3
 @onready var walkingSound = $AnimationPlayer
 
-var userInterface = load("res://prefabs/UI.tscn")
+var userInterface = load("res://prefabs/ui.tscn")
 var loadUserInterface = userInterface.instantiate()
 
 var waterSplashEmitter = load("res://prefabs/watersplash.tscn")
@@ -53,7 +53,7 @@ func _ready():
 	
 	# Initialize references
 	# Load the bob scene
-	bobPrefab = preload("res://Prefabs/bob.tscn")
+	bobPrefab = preload("res://prefabs/bob.tscn")
 	fishPrefab = preload("res://prefabs/gameobjects/fish/fish_1.tscn")
 	# Assuming the rod is a child of the player, get its reference
 	rod = $Node3D/Camera3D/Hand3D/FishingRod
@@ -132,12 +132,18 @@ func pickObject():
 		lastTarget.linear_damp = 0
 
 func _input(event):
+	if event is InputEventMouseButton:
+		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 	if event is InputEventMouseMotion && !playerIsDead:
 		rotate_y(-event.relative.x * mouseMath)
 		$Node3D.rotate_x(-event.relative.y * mouseMath)
 		$Node3D.rotation.x = clamp($Node3D.rotation.x, -1.5, 1.5)
-	if Input.is_action_pressed("Crouch"):
-			references.CameraPlayer.add_trauma(50)
+	
+	# Debug test camera shake
+	#if Input.is_action_pressed("Crouch"):
+			#references.CameraPlayer.add_trauma(50)
 
 func _on_interaction_timer_timeout():
 	canInteract = true

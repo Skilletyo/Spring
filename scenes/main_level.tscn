@@ -1,7 +1,7 @@
-[gd_scene load_steps=88 format=3 uid="uid://i5kujxtp0aoe"]
+[gd_scene load_steps=89 format=3 uid="uid://i5kujxtp0aoe"]
 
+[ext_resource type="Shader" path="res://vfx/fake_volumetric_light.gdshader" id="1_0dwwk"]
 [ext_resource type="Material" uid="uid://cd002ua4sr5dl" path="res://materials/water.material" id="3_81alb"]
-[ext_resource type="Shader" path="res://VFX/fake_volumetric_light.gdshader" id="3_b7c0k"]
 [ext_resource type="Environment" uid="uid://dgiwc2qkhodnd" path="res://vfx/environment.tres" id="4_xurpp"]
 [ext_resource type="Shader" path="res://materials/water_modified.gdshader" id="5_qko3u"]
 [ext_resource type="Script" path="res://addons/yamms/MultiScatter.gd" id="6_2c5a2"]
@@ -47,7 +47,7 @@ is_hemisphere = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ktvht"]
 render_priority = 0
-shader = ExtResource("3_b7c0k")
+shader = ExtResource("1_0dwwk")
 shader_parameter/tint_color = Color(1, 0.964706, 0.890196, 1)
 shader_parameter/fresnel_value = 0.03
 shader_parameter/transparency_multiplier = 2.0
@@ -67,7 +67,7 @@ cap_bottom = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_glcdt"]
 render_priority = 0
-shader = ExtResource("3_b7c0k")
+shader = ExtResource("1_0dwwk")
 shader_parameter/tint_color = Color(1, 0.768627, 0.768627, 1)
 shader_parameter/fresnel_value = 0.03
 shader_parameter/transparency_multiplier = 2.0
@@ -144,6 +144,12 @@ size = Vector2(100, 100)
 subdivide_width = 100
 subdivide_depth = 100
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_b5758"]
+material = ExtResource("3_81alb")
+size = Vector2(50, 50)
+subdivide_width = 50
+subdivide_depth = 50
+
 [sub_resource type="MultiMesh" id="MultiMesh_lfxqq"]
 transform_format = 1
 instance_count = 16
@@ -163,9 +169,10 @@ instance_count = 30
 mesh = ExtResource("8_p3wx4")
 buffer = PackedFloat32Array(-1.32947, -0.0661313, -0.0311475, -54.0577, -0.0639547, 1.29028, -0.00968281, -4.0611, 0.0310632, -0.00827835, -1.3083, 62.9321, -0.447119, -0.0553395, -1.14773, -48.0527, -0.0439457, 1.10278, -0.0360523, -4.84803, 1.14303, 0.0309435, -0.446779, 79.6576, 1.0557, 0.022803, 0.282425, -12.7635, -0.0134684, 1.25813, -0.0512372, -3.88327, -0.348465, 0.0491545, 1.29859, 75.4124, -1.41837, -0.0146824, 0.379198, -28.8518, -0.0166098, 1.42857, -0.00681457, -4.40083, -0.288931, -0.00851624, -1.08106, 66.5276, -1.1428, 0.000644533, 0.373055, -40.5688, -0.00396675, 1.39392, -0.0145599, -4.66636, -0.459271, -0.0160024, -1.40689, 90.3011, -1.00507, -0.0117602, -0.958942, -41.8625, -0.0120976, 1.26054, -0.00277934, -4.46814, 0.856654, 0.00624161, -0.897941, 59.5166, 0.0740025, 0.00425763, 1.11759, -31.2291, -0.038623, 1.0703, -0.00151999, -2.74166, -1.35223, -0.0486696, 0.0897249, 54.8036, -1.25332, -0.0309196, 0.461588, -13.8829, -0.0400684, 1.43453, -0.0127026, -3.72296, -0.410419, -0.021344, -1.11582, 77.2195, 0.582972, 0.00020067, -1.05909, -22.9574, -0.00871032, 1.1293, -0.0045806, -3.03499, 1.05466, 0.0104894, 0.580537, 60.7917, 1.08059, 0.0293801, 0.161654, -12.2222, -0.0249614, 1.0501, -0.0239961, -3.4603, -0.168172, 0.0216011, 1.12023, 66.8999, -0.703336, -0.0284488, -0.791654, -34.3659, -0.0123006, 1.42087, -0.0401319, -4.1522, 1.05405, -0.0173074, -0.935837, 81.9589, -1.05514, -0.0425038, -0.80966, -50.1245, -0.0303203, 1.07134, -0.0167279, -4.99787, 0.795367, 0.00632069, -1.03684, 74.991, 0.689175, -0.0221879, -1.12434, -21.7171, -0.0230222, 1.14387, -0.0366849, -3.01822, 1.24759, 0.0496038, 0.763744, 71.9788, 1.03556, -0.0210433, -0.924927, -42.6924, -0.0319304, 1.31168, -0.0655922, -4.25576, 0.958815, 0.0769352, 1.07175, 72.8067, 0.0146696, -0.00306505, -1.4315, -11.3271, -0.0082725, 1.44358, -0.00317567, -3.7928, 1.18107, 0.00679477, 0.0120887, 72.6288, -1.04777, -0.0446066, 0.0571916, -38.835, -0.0623593, 1.41899, -0.0357062, -4.11277, -0.0620792, -0.031974, -1.16225, 62.0928, 1.07832, 0.0432017, 0.647433, -12.1802, -0.0280779, 1.36286, -0.044176, -3.85363, -0.5584, 0.0186017, 0.928789, 75.1108, 1.34395, 0.00781036, -0.546782, -16.7648, -0.0207069, 1.17989, -0.0340423, -3.83963, 0.452241, 0.0400246, 1.11215, 82.8759, -0.551549, 0.0174676, 1.06132, -28.8458, -0.0209682, 1.27183, -0.031829, -4.25318, -0.965961, -0.0284766, -0.501523, 64.598, 0.349442, -0.0409599, -1.26262, -34.1126, -0.00414511, 1.40736, -0.0468026, -3.58481, 1.40339, 0.0170316, 0.38785, 95.6265, 1.3587, 0.0316824, 0.365659, -45.236, -0.0129247, 1.18612, -0.0547455, -3.68603, -0.386396, 0.0618102, 1.4304, 89.7663, 1.01594, 0.0131411, -0.390437, -30.6001, -0.0318172, 1.31849, -0.0384138, -4.26874, 0.368911, 0.036906, 0.961173, 93.1288, 0.754155, -0.00778971, -0.850732, -45.9632, -0.0231687, 1.49919, -0.0342658, -4.56918, 1.04057, 0.0371568, 0.922099, 58.3482, 0.3482, 0.0118346, -0.939088, -14.9095, -0.0363321, 1.00955, -0.000748782, -3.66564, 1.15737, 0.0419707, 0.429665, 74.0633, -0.386839, 0.0401184, 1.14418, -20.7869, -0.020858, 1.01749, -0.0427282, -3.35228, -1.36199, -0.0471876, -0.458822, 70.8711, -1.17129, -0.0291657, 0.789181, -35.2032, -0.0469696, 1.02453, -0.0318479, -3.78653, -0.681515, -0.0627587, -1.01381, 65.9451, 1.28501, 0.02578, -0.198576, -34.0292, -0.0301279, 1.2179, -0.036848, -4.20929, 0.158085, 0.0349989, 1.02753, 73.8395, 1.28448, 0.0246118, -0.318591, -54.9794, -0.0406892, 1.36969, -0.0582368, -4.88419, 0.325571, 0.0656977, 1.3177, 83.3505, -1.39471, -0.0370968, 0.0784683, -25.6157, -0.0362747, 1.24335, -0.0569441, -3.09013, -0.0809158, -0.0697394, -1.47118, 80.4474, -0.487232, 0.0246074, 0.986824, -19.6583, -0.0307055, 1.15154, -0.0438752, -4.07917, -1.04228, -0.0473547, -0.513433, 91.9536)
 
-[sub_resource type="MultiMesh" id="MultiMesh_h0vqi"]
+[sub_resource type="MultiMesh" id="MultiMesh_nmhgq"]
 transform_format = 1
 instance_count = 12
+mesh = ExtResource("12_2alg8")
 buffer = PackedFloat32Array(1, 0, 0, -44, 0, 1, 0, -1, 0, 0, 1, 53, -6.11959e-08, 1.4, 0, -43.28, -1.4, -6.11959e-08, 0, 1, 0, 0, 1.4, 53.26, -6.11959e-08, 1.4, 0, -41.28, -1.4, -6.11959e-08, 0, 0, 0, 0, 1.4, 52.26, 1, 0, 0, -38.7, 0, 1, 0, -1, 0, 0, 1, 51.4, -0.707107, 0, -0.707107, -38.1, 0, 1, 0, 0.7, 0.707107, 0, -0.707107, 52.4, -0.399519, -0.836516, 0.375, -39.1, -0.836516, 0.5, 0.224144, 0.9, -0.375, -0.224144, -0.899519, 53.4, -0.399519, -0.836516, 0.375, -33.8, -0.836516, 0.5, 0.224144, 1, -0.375, -0.224144, -0.899519, 51.7, -0.399519, -0.836516, 0.375, -42.8, -0.836516, 0.5, 0.224144, 1, -0.375, -0.224144, -0.899519, 53.7, -6.11959e-08, 1.4, 0, -37.98, -1.4, -6.11959e-08, 0, 1, 0, 0, 1.4, 51.66, -1.10153e-07, 1.4, 0, -46.98, -2.52, -6.11959e-08, 0, 0.2, 0, 0, 1.4, 54.66, 3.85535e-08, -0.49, -0.848705, -46.98, -1.764, -4.28372e-08, 0, 1.2, -6.67765e-08, 0.848705, -0.49, 54.66, -6.11959e-08, 1.4, 0, -35.98, -1.4, -6.11959e-08, 0, 0, 0, 0, 1.4, 50.66)
 
 [sub_resource type="MultiMesh" id="MultiMesh_4ehwj"]
@@ -484,13 +491,22 @@ transform = Transform3D(0.166366, -0.620885, 0.766044, 0.965926, 0.258819, 0, -0
 mesh = SubResource("CylinderMesh_pipod")
 skeleton = NodePath("../DirectionalLight3D/Sun")
 
+[node name="CharacterBody3D" parent="." instance=ExtResource("17_qkvsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 4, 120)
+
 [node name="WaterBig" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 37.5718, 0, 29.3301)
 extra_cull_margin = 16384.0
 mesh = SubResource("PlaneMesh_mhl5y")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_uyfor")
+volume_db = -25.0
+autoplay = true
+
 [node name="Water" type="Node3D" parent="."]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 47, 0, 29)
+visible = false
 
 [node name="Water1" type="MeshInstance3D" parent="Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108, 0, 105)
@@ -534,8 +550,216 @@ visibility_range_end_margin = 5.0
 mesh = SubResource("PlaneMesh_smb0w")
 skeleton = NodePath("../..")
 
+[node name="Water2" type="Node3D" parent="."]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 16, 0, 79)
+
+[node name="Water1" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133, 0, 105)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water2" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9999, 0, 105)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water3" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9999, 0, 105)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water4" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0001, 0, 105)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water5" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133, 0, 54.9999)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water6" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -82.9999, 0, 54.9999)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water7" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -32.9999, 0, 54.9999)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water8" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 17.0001, 0, 54.9999)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water9" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -133, 0, 4.99991)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water10" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -82.9999, 0, 4.99991)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water11" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -32.9999, 0, 4.99991)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water12" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 17.0001, 0, 4.99991)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water13" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -133, 0, -45.0001)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water14" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -82.9998, 0, -45.0001)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water15" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -32.9998, 0, -45.0001)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water16" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 17.0001, 0, -45.0001)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water17" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -133, 0, -95.0002)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water18" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -82.9998, 0, -95.0002)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water19" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -32.9998, 0, -95.0002)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water20" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 17.0001, 0, -95.0002)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water21" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -133, 0, -145)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water22" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -82.9998, 0, -145)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water23" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -32.9998, 0, -145)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water24" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 17.0001, 0, -145)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water25" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -133, 0, -195)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water26" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -82.9998, 0, -195)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water27" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -32.9998, 0, -195)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
+[node name="Water28" type="MeshInstance3D" parent="Water2"]
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 17.0001, 0, -195)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
+mesh = SubResource("PlaneMesh_b5758")
+skeleton = NodePath("../..")
+
 [node name="Landscape" parent="." instance=ExtResource("6_avqk7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -7)
+
+[node name="Props" type="Node3D" parent="."]
+transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -54.4, -0.2, 104.1)
+
+[node name="Stereo" parent="Props" instance=ExtResource("16_rus3r")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -5.80967, 2.85698, 25.4953)
+
+[node name="Barrel" parent="Props" instance=ExtResource("6_ssdmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.5, 21)
 
 [node name="IslandBeginning" type="Node3D" parent="."]
 
@@ -742,7 +966,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -31)
 
 [node name="MeshCombiner" parent="IslandBeginning/Rocks/Prefab1" instance=ExtResource("11_vsc7i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 1, -53)
-multimesh = SubResource("MultiMesh_h0vqi")
+multimesh = SubResource("MultiMesh_nmhgq")
 MeshToCopy = ExtResource("12_2alg8")
 
 [node name="Stone02_" parent="IslandBeginning/Rocks/Prefab1" instance=ExtResource("11_4c8uc")]
@@ -3030,27 +3254,11 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54.7, 11, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 shape = SubResource("BoxShape3D_l2y71")
 
-[node name="Props" type="Node3D" parent="."]
-transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -54.4, -0.2, 104.1)
-
-[node name="Stereo" parent="Props" instance=ExtResource("16_rus3r")]
-transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -5.80967, 2.85698, 25.4953)
-
-[node name="Barrel" parent="Props" instance=ExtResource("6_ssdmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.5, 21)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_uyfor")
-volume_db = -25.0
-autoplay = true
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("17_qkvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 4, 120)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Guide" type="MeshInstance3D" parent="IslandMountain"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 53.9, 10.1, -82)
 material_override = SubResource("StandardMaterial3D_ftt20")
 mesh = SubResource("QuadMesh_l18ej")
+skeleton = NodePath("../..")
 
 [node name="EndGameAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -3069,7 +3277,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 10, 120)
 
 [node name="Cameras" type="Node" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="Cameras"]
+[node name="Camera3D1" type="Camera3D" parent="Cameras"]
 transform = Transform3D(0.70091, -0.0565271, -0.711006, 0, 0.996855, -0.0792529, 0.713249, 0.0555492, 0.698706, -68.5513, 4.71056, 112.581)
+visible = false
+
+[node name="Camera3D3" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.801255, 0.272058, 0.532893, 0, 0.890645, -0.4547, -0.598323, 0.364331, 0.713633, 59.1723, 0.922021, -25.222)
+visible = false
+
+[node name="Camera3D2" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.237684, -0.206853, -0.949062, 0, 0.977062, -0.212956, 0.971343, -0.0506161, -0.232232, -6.63041, 0.624952, -71.6349)
+visible = false
+
+[node name="Camera3D4" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.876728, 0.176639, 0.447378, 0, 0.930126, -0.367242, -0.480987, 0.321971, 0.815467, 53.1553, 1.16103, -21.1566)
+visible = false
+
+[node name="Camera3D5" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.878815, -0.147813, -0.453692, 0, 0.95081, -0.309775, 0.477163, 0.272234, 0.835586, -18.8127, 7.76781, 20.6026)
+visible = false
+fov = 60.0
 
 [editable path="PlayerDetector"]
