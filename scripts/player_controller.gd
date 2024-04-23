@@ -181,7 +181,7 @@ func cast():
 	var upwardForce = Vector3(0, sin(rodUpwardAngle), cos(rodUpwardAngle)) * castForce * 0.5 # Apply half of the force upward
 	
 	# Combine the straight and upward forces
-	var totalForce = straightForce + upwardForce
+	var totalForce = straightForce
 	
 	# Apply the combined force to the bob
 	bob.apply_central_impulse(totalForce)
@@ -215,13 +215,14 @@ func attach_fish():
 
 func reel_in(delta):
 	if bobInstance:
-		var direction_to_bob = bobInstance.global_transform.origin - global_transform.origin
-		bobInstance.translate(-direction_to_bob.normalized() * reelSpeed * delta)
-		var direction_to_bob_after_moving = bobInstance.global_transform.origin - global_transform.origin
-		if direction_to_bob_after_moving.length() > direction_to_bob.length():
+		var direction_to_player = global_transform.origin - bobInstance.global_transform.origin
+		print(direction_to_player)
+		bobInstance.translate(direction_to_player.normalized() * reelSpeed * delta)
+		var direction_to_player_after_moving = global_transform.origin - bobInstance.global_transform.origin
+		if direction_to_player_after_moving.length() > direction_to_player.length():
 			reset_fishing()
 		# Check if the bob has reached the player's position
-		if direction_to_bob.length() < deleteThreshold:
+		if direction_to_player.length() < deleteThreshold:
 			stop_reeling()
 			catch_fish()
 			delete_bob()

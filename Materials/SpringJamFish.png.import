@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxkcbv61h5l87"
-path="res://.godot/imported/SpringJamFish.png-42467cdf09e93fc352452611cceadaab.ctex"
+path="res://.godot/imported/SpringJamFish.png-58767122bb98bdfa572a8b25e1f13d14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://materials/SpringJamFish.png"
-dest_files=["res://.godot/imported/SpringJamFish.png-42467cdf09e93fc352452611cceadaab.ctex"]
+source_file="res://Materials/SpringJamFish.png"
+dest_files=["res://.godot/imported/SpringJamFish.png-58767122bb98bdfa572a8b25e1f13d14.ctex"]
 
 [params]
 
