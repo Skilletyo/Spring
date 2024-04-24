@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlvglc3bpgur3"]
+[gd_scene load_steps=2 format=3 uid="uid://cmdymwtaqqc2x"]
 
-[ext_resource type="Script" path="res://Scripts/multi_mesh_combiner.gd" id="1_10yx3"]
+[ext_resource type="Script" path="res://scripts/multi_mesh_combiner.gd" id="1_cteo8"]
 
 [node name="MeshCombiner" type="MultiMeshInstance3D"]
 visibility_range_end = 75.0
 visibility_range_end_margin = 5.0
-script = ExtResource("1_10yx3")
+script = ExtResource("1_cteo8")

@@ -29,9 +29,10 @@ shape = SubResource("BoxShape3D_k5ubp")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamOggVorbis_uxkg1")
-volume_db = -30.0
+volume_db = -20.0
+max_db = -3.0
 
-[node name="Thump" type="AudioStreamPlayer" parent="."]
+[node name="ThumpSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamOggVorbis_ijvhr")
 volume_db = -3.0
 

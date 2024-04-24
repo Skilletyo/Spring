@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1fdpa6v24m2j"]
+[gd_scene load_steps=3 format=3 uid="uid://doc4xefivfsvk"]
 
 [ext_resource type="ArrayMesh" uid="uid://d1ctan8tdbh3e" path="res://models/pier/meshes/Root Scene_PierPlanks.res" id="1_p381p"]
 
@@ -9,6 +9,7 @@ size = Vector3(16, 1, 4)
 
 [node name="RootScenePierPlanks" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+visibility_range_end = 100.0
 mesh = ExtResource("1_p381p")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootScenePierPlanks"]

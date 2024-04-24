@@ -19,6 +19,8 @@ mass = 5.0
 
 [node name="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
 mesh = SubResource("CylinderMesh_wu34d")
 
 [node name="CollisionShape3D" parent="." index="1"]

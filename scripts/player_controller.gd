@@ -53,8 +53,8 @@ func _ready():
 	
 	# Initialize references
 	# Load the bob scene
-	bobPrefab = preload("res://prefabs/bob.tscn")
-	fishPrefab = preload("res://prefabs/gameobjects/fish/fish_1.tscn")
+	bobPrefab = load("res://prefabs/bob.tscn")
+	fishPrefab = load("res://prefabs/gameobjects/fish/fish_1.tscn")
 	# Assuming the rod is a child of the player, get its reference
 	rod = $Node3D/Camera3D/Hand3D/FishingRod
 
@@ -68,7 +68,8 @@ func _physics_process(delta):
 
 func playerMovement(delta):
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		#velocity.y -= gravity * delta
+		velocity.y -= 9.8 * delta
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !playerIsDead:
 		velocity.y = jumpVelocity

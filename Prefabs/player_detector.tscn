@@ -21,7 +21,7 @@ shape = SubResource("BoxShape3D_4jucw")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SplashSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamOggVorbis_ijvhr")
 volume_db = -3.0
 

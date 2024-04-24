@@ -25,6 +25,8 @@ references="*res://scripts/references.gd"
 
 [display]
 
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
@@ -114,3 +116,5 @@ Escape={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+mesh_lod/lod_change/threshold_pixels=4.0
+lights_and_shadows/directional_shadow/size.web=2048

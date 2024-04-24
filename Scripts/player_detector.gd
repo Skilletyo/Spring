@@ -1,6 +1,7 @@
 extends Area3D
 
 @onready var marker = $Marker3D
+@onready var splash_sound = $SplashSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,4 +21,4 @@ func _on_body_entered(body):
 func teleport_player():
 	references.Player.global_position = marker.global_position
 	references.Player.global_rotation = marker.global_rotation
-	$AudioStreamPlayer.play()
+	splash_sound.play()

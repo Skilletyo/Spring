@@ -31,21 +31,29 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
 mesh = SubResource("BoxMesh_d2vqp")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, -0.73692, 0.66766, 0)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
 mesh = SubResource("BoxMesh_d2vqp")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(0.5, 0, 0, 0, -8.74228e-09, -0.5, 0, 0.2, -2.18557e-08, -0.496256, 0, 0.463509)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
 mesh = SubResource("CylinderMesh_fj4f5")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(0.5, 0, 0, 0, -8.74228e-09, -0.5, 0, 0.2, -2.18557e-08, 0.453669, 0, 0.463509)
+visibility_range_end = 50.0
+visibility_range_end_margin = 5.0
 mesh = SubResource("CylinderMesh_fj4f5")
 skeleton = NodePath("../..")
 
