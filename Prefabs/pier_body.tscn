@@ -9,6 +9,7 @@ size = Vector3(16, 1, 4)
 
 [node name="RootScenePierPlanks" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+lod_bias = 2.0
 visibility_range_end = 100.0
 mesh = ExtResource("1_p381p")
 

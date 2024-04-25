@@ -16,6 +16,8 @@ uniform float max_step : hint_range(0.0, 1.0, 0.01) = 0.6; // max step for the s
 uniform float sobol_brightness : hint_range(0.0, 1.0, 0.01) = 0.5; // max step for the smoothstep() function
 uniform float transparency : hint_range(0.0, 1.0, 0.01) = 0.3; // max step for the smoothstep() function
 
+
+
 // x direction kernel
 const mat3 kx = mat3(
 	vec3(-1, 0, 1),
@@ -55,8 +57,8 @@ void fragment() {
 	for (int i = 0; i < 3; i++ ) {
 		for (int j = 0; j < 3; j++) {
 			vec3 sample_around_pixel = texelFetch(screen_texture, ivec2(FRAGCOORD.xy) + ivec2(i-1,j-1), 0).rgb;
-			vec3 sample_grey = vec3(sample_around_pixel.r * 0.3, sample_around_pixel.g * 0.59, sample_around_pixel.b * 0.11);
-			I[i][j] = sample_grey.r + sample_grey.g + sample_grey.b;
+			float sample_grey = sample_around_pixel.r * 0.3 + sample_around_pixel.g * 0.59 + sample_around_pixel.b * 0.11;
+			I[i][j] = sample_grey;
 			
 		}
 	}
@@ -66,11 +68,8 @@ void fragment() {
 	float gy = dot(ky[0], I[0]) + dot(ky[1], I[1]) + dot(ky[2], I[2]); // convolution of the image's and intensity's 'y' values
 	float g = sqrt(pow(gx, 2.0) + pow(gy, 2.0)); // combine x and y of the sobel and get rid of negative values
 	
-	
 	// strength of the effect;
 	g = smoothstep(min_step, max_step, g); // smoothstep() smooths out a value over a curve if it is within min and max steps. Otherwise, it returns 0 (if smaller than min_step) and 1 (if bigger than max_step)
-	
-	ALBEDO = vec3(g);
 	
 //	//color + sobel edge detection5
 	ALBEDO = texture_color.rgb - (vec3(g) * sobol_brightness);

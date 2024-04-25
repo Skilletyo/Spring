@@ -30,6 +30,7 @@ var lastTarget = null
 var canInteract = false
 
 var mouseMath = (mouseSensitivity) / 1000
+var mouse_input: Vector2 # Mouse input since last frame
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -46,6 +47,7 @@ var deleteThreshold = 1.0 # Adjust this value to set the threshold distance for 
 var isReeling = false # Flag to track if the player is reeling in
 var canReel = false
 
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	references.Player = self
@@ -57,10 +59,12 @@ func _ready():
 	fishPrefab = load("res://prefabs/gameobjects/fish/fish_1.tscn")
 	# Assuming the rod is a child of the player, get its reference
 	rod = $Node3D/Camera3D/Hand3D/FishingRod
+	Input.use_accumulated_input = false
 
 func _physics_process(delta):
 	
 	fishing_sounds()
+	handle_mouse()
 	playerMovement(delta)
 	pickObject()
 	interactWithObject()
@@ -95,6 +99,15 @@ func playerMovement(delta):
 		walkingSound.play("Walking")
 	if !is_on_floor() or velocity.z == 0:
 		walkingSound.stop()
+
+
+func handle_mouse():
+	if !playerIsDead:
+		mouse_input = clamp(Vector2(mouse_input * mouseMath), Vector2(-1,-1),Vector2(1,1))
+		rotate_y(-mouse_input.x)
+		$Node3D.rotate_x(-mouse_input.y)
+		$Node3D.rotation.x = clamp($Node3D.rotation.x, -1.5, 1.5)
+	mouse_input = Vector2.ZERO
 
 
 func interactWithObject():
@@ -138,9 +151,9 @@ func _input(event):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	if event is InputEventMouseMotion && !playerIsDead:
-		rotate_y(-event.relative.x * mouseMath)
-		$Node3D.rotate_x(-event.relative.y * mouseMath)
-		$Node3D.rotation.x = clamp($Node3D.rotation.x, -1.5, 1.5)
+		mouse_input += event.relative
+		var viewport_transform: Transform2D = get_tree().root.get_final_transform()
+		mouse_input += event.xformed_by(viewport_transform).relative
 	
 	# Debug test camera shake
 	#if Input.is_action_pressed("Crouch"):
@@ -155,8 +168,17 @@ func _process(delta):
 		cast()
 	if Input.is_action_pressed("ReelIn") && canReel:
 		start_reeling()
+	
 	if isReeling and bobInstance:
 		reel_in(delta)
+	
+	if Input.is_action_just_pressed("ToggleFullscreen"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+
 
 func cast():
 	$ReelTimer.wait_time = randf_range(2.0, 4.0)
