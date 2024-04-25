@@ -79,6 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_labc6")
 speed = 3.0
 runSpeed = 5.0
+mouseSensitivity = 1.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false

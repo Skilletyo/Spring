@@ -17,6 +17,7 @@ var playerIsDead = false
 @onready var reelingInSound = $Audio/AudioStreamPlayer2
 @onready var catchingSound = $Audio/AudioStreamPlayer3
 @onready var walkingSound = $AnimationPlayer
+@onready var head = $Node3D
 
 var userInterface = load("res://prefabs/ui.tscn")
 var loadUserInterface = userInterface.instantiate()
@@ -29,8 +30,7 @@ var currentTarget = null
 var lastTarget = null
 var canInteract = false
 
-var mouseMath = (mouseSensitivity) / 1000
-var mouse_input: Vector2 # Mouse input since last frame
+@onready var mouseMath = (mouseSensitivity) / 1000000
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -61,19 +61,19 @@ func _ready():
 	rod = $Node3D/Camera3D/Hand3D/FishingRod
 	Input.use_accumulated_input = false
 
+
 func _physics_process(delta):
-	
 	fishing_sounds()
-	handle_mouse()
 	playerMovement(delta)
 	pickObject()
 	interactWithObject()
 	move_and_slide()
 
+
 func playerMovement(delta):
 	if not is_on_floor():
-		#velocity.y -= gravity * delta
-		velocity.y -= 9.8 * delta
+		velocity.y -= gravity * delta
+		#velocity.y -= 9.8 * delta
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !playerIsDead:
 		velocity.y = jumpVelocity
@@ -101,15 +101,6 @@ func playerMovement(delta):
 		walkingSound.stop()
 
 
-func handle_mouse():
-	if !playerIsDead:
-		mouse_input = clamp(Vector2(mouse_input * mouseMath), Vector2(-1,-1),Vector2(1,1))
-		rotate_y(-mouse_input.x)
-		$Node3D.rotate_x(-mouse_input.y)
-		$Node3D.rotation.x = clamp($Node3D.rotation.x, -1.5, 1.5)
-	mouse_input = Vector2.ZERO
-
-
 func interactWithObject():
 	if Input.is_action_pressed("Interact") and !playerIsDead:
 		if $Node3D/Camera3D/RayCast3D.is_colliding():
@@ -118,6 +109,7 @@ func interactWithObject():
 					seenObject.interacted_with.emit()
 					canInteract = false
 					interactionTimeOut.start(1)
+
 
 func pickObject():
 	if Input.is_action_pressed("Pickup") and !playerIsDead:
@@ -145,25 +137,43 @@ func pickObject():
 		lastTarget.linear_damp = 0
 		lastTarget.linear_damp = 0
 
+
 func _input(event):
-	if event is InputEventMouseButton:
-		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseButton:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			return
 	
 	if event is InputEventMouseMotion && !playerIsDead:
-		mouse_input += event.relative
-		var viewport_transform: Transform2D = get_tree().root.get_final_transform()
-		mouse_input += event.xformed_by(viewport_transform).relative
+		var mouse_input = event.relative * (get_window().get_size().y * mouseMath)
+		if mouse_input.length() <= 0.5:
+			rotate_y(-mouse_input.x)
+			head.rotate_x(-mouse_input.y)
+			head.rotation.x = clamp(head.rotation.x, -0.5 * PI, 0.5 * PI)
+		else:
+			print("Mouse snap detected!   ", mouse_input)
+	
+	if event is InputEventKey:
+		if event.is_action_pressed("ToggleFullscreen"):
+			if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			else:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	
 	# Debug test camera shake
 	#if Input.is_action_pressed("Crouch"):
 			#references.CameraPlayer.add_trauma(50)
 
+
 func _on_interaction_timer_timeout():
 	canInteract = true
 
+
 # Fishing Logic
 func _process(delta):
+	#handle_mouse()
+	
 	if Input.is_action_just_pressed("Cast") && bobInstance == null:
 		cast()
 	if Input.is_action_pressed("ReelIn") && canReel:
@@ -171,13 +181,6 @@ func _process(delta):
 	
 	if isReeling and bobInstance:
 		reel_in(delta)
-	
-	if Input.is_action_just_pressed("ToggleFullscreen"):
-		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		else:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
 
 
 func cast():
